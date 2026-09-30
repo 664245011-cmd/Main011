@@ -204,12 +204,9 @@ footer, #MainMenu { visibility: hidden; }
 st.write("")
 
 APPS = [
-    ("🌳", "Decision Tree", "ระบบประเมินความเสี่ยงโรคหัวใจด้วย AI", "https://decision3-yad58dgmbu5mbbrsbeiqtq.streamlit.app/"),
-    ("🛡️", "SVM", "ระบบทำนายความเสี่ยงการผิดนัดชำระหนี้", "https://azesgeijzgekzbjt9filyx.streamlit.app/"),
-    ("🎯", "K-Means Clustering", "ระบบวิเคราะห์และจัดกลุ่มลูกค้าอัจฉริยะ", "https://kmeans-vjzss3shsayrduyy2biqja.streamlit.app/"),
-    ("🔍", "K-Nearest Neighbors", "ระบบทำนายความเสี่ยงโรคหัวใจด้วย AI (KNN)", "https://dtreeeheart-yxmmfpahjkybedavud7vag.streamlit.app/"),
-    ("📈", "Regression", "เครื่องมือทำนายราคาบ้านในแคลิฟอร์เนีย", "https://regression-3jczotqxn3yteveftwyzfc.streamlit.app/"),
-    ("🌲", "Random Forest", "ตัวทำนายแบบ Random Forest", "https://random-forest-7rkhpng6rjrbaqrjflxa4g.streamlit.app/"),
+    ("🌳", "งานที่ 1", "relationships", "https://colab.research.google.com/drive/1KMFRz3LPGn4fD5jBG-ZwCuxoh_yIozvE?authuser=1"),
+    ("🛡️", "งานที่ 2", "relationships", "https://colab.research.google.com/drive/1KMFRz3LPGn4fD5jBG-ZwCuxoh_yIozvE?authuser=1"),
+    ("🎯", "งานที่ 3", "relationships", "https://9suvavqbzjuffsung5rryh.streamlit.app/"),
 ]
 
 cols = st.columns(3)
