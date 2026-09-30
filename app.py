@@ -172,6 +172,12 @@ APPS = [
         "แนะนำ Anime จากความสัมพันธ์และ Anime ที่เพื่อนเคยดู",
         "https://9suvavqbzjuffsung5rryh.streamlit.app/",
     ),
+    (
+        "🎯",
+        "เว็บ Neo4j",
+        " Neo4j ",
+        "https://neo4j.com/",
+    ),
 ]
 
 cols = st.columns(3)
