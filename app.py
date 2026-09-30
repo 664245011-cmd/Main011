@@ -227,4 +227,4 @@ st.markdown("""
 <div class="custom-footer">
     Made with ❤️ using Streamlit · Machine Learning Projects 2026
 </div>
-""", unsafe_allow_html=True).
+""", unsafe_allow_html=True)
