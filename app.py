@@ -143,7 +143,7 @@ footer, #MainMenu { visibility: hidden; }
 </style>
 
 <div class="hero">
-    <h1>ANIME RECOMMENDATION HUB</h1>
+    <h1>ANIME RECOMMENDATION</h1>
     <p>ระบบแนะนำอนิเมะด้วยกราฟความสัมพันธ์ระหว่าง User และ Anime</p>
 </div>
 """, unsafe_allow_html=True)
