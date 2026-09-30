@@ -4,7 +4,7 @@ from pathlib import Path
 import streamlit as st
 
 st.set_page_config(
-    page_title="ผู้พัฒนา | ML Hub",
+    page_title="ผู้พัฒนา | Anime Recommendation",
     page_icon="🧑‍💻",
     layout="wide",
     initial_sidebar_state="collapsed",
@@ -175,7 +175,7 @@ footer, #MainMenu { visibility: hidden; }
 st.markdown("""
 <div class="hero">
     <h1>ผู้พัฒนา</h1>
-    <p>ข้อมูลผู้จัดทำโปรเจค Machine Learning Hub</p>
+    <p>ข้อมูลผู้จัดทำโปรเจค Anime Recommendation</p>
 </div>
 """, unsafe_allow_html=True)
 
