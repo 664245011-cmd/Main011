@@ -173,30 +173,47 @@ APPS = [
         "https://9suvavqbzjuffsung5rryh.streamlit.app/",
     ),
     (
-        "🎯",
-        "เว็บ Neo4j",
-        " Neo4j ",
+        "🗄️",
+        "Neo4j Database",
+        "ฐานข้อมูลกราฟที่ใช้จัดเก็บ User, Anime และความสัมพันธ์",
         "https://neo4j.com/",
     ),
 ]
 
+# 4 cards: 3 cards on the first row and 1 centered on the second row.
 cols = st.columns(3)
-
 for i, (icon, title, desc, url) in enumerate(APPS):
-    with cols[i]:
-        st.markdown(
-            f"""
-            <div class="card">
-                <div>
-                    <div class="icon">{icon}</div>
-                    <h3>{title}</h3>
-                    <p>{desc}</p>
+    if i < 3:
+        with cols[i]:
+            st.markdown(
+                f"""
+                <div class="card">
+                    <div>
+                        <div class="icon">{icon}</div>
+                        <h3>{title}</h3>
+                        <p>{desc}</p>
+                    </div>
+                    <a class="btn" href="{url}" target="_blank">เปิดระบบ →</a>
                 </div>
-                <a class="btn" href="{url}" target="_blank">เปิดระบบ →</a>
-            </div>
-            """,
-            unsafe_allow_html=True,
-        )
+                """,
+                unsafe_allow_html=True,
+            )
+    else:
+        left, center, right = st.columns([1, 1.0, 1])
+        with center:
+            st.markdown(
+                f"""
+                <div class="card">
+                    <div>
+                        <div class="icon">{icon}</div>
+                        <h3>{title}</h3>
+                        <p>{desc}</p>
+                    </div>
+                    <a class="btn" href="{url}" target="_blank">เปิดเว็บไซต์ →</a>
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )
 
 st.markdown(
     """
