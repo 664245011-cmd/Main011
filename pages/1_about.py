@@ -10,103 +10,127 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
 )
 
-st.markdown("""
+st.markdown(
+    """
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&family=Inter:wght@400;600;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;800&display=swap');
 
-/* Main App Layout - Modern Dark Theme */
+/* Main App Layout - Anime Cyberpunk Theme */
 .stApp {
-    background-color: #0B0F19;
+    background-color: #050811;
     background-image: 
-        radial-gradient(circle at 15% 50%, rgba(99, 102, 241, 0.15) 0%, transparent 25%),
-        radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.15) 0%, transparent 25%),
-        radial-gradient(circle at 50% 80%, rgba(6, 182, 212, 0.1) 0%, transparent 30%);
+        radial-gradient(circle at 10% 20%, rgba(236, 72, 153, 0.12) 0%, transparent 30%),
+        radial-gradient(circle at 90% 80%, rgba(59, 130, 246, 0.15) 0%, transparent 35%),
+        radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.08) 0%, transparent 40%);
     background-attachment: fixed;
 }
 
 html, body, [class*="css"] { 
-    font-family: 'Prompt', 'Inter', sans-serif; 
-    color: #E2E8F0;
+    font-family: 'Prompt', 'Outfit', sans-serif; 
+    color: #F1F5F9;
 }
 
-/* Hero Section */
+/* Hero Section with Glowing Accent */
 .hero { 
     text-align: center; 
-    padding: 50px 20px 20px 20px; 
+    padding: 40px 20px 10px 20px; 
 }
 .hero h1 {
-    font-family: 'Inter', 'Prompt', sans-serif;
-    font-size: 3rem;
+    font-family: 'Outfit', 'Prompt', sans-serif;
+    font-size: 3.2rem;
     font-weight: 800;
-    background: linear-gradient(135deg, #818CF8 0%, #A78BFA 50%, #22D3EE 100%);
+    background: linear-gradient(135deg, #FF758C 0%, #FF7EB3 50%, #7928CA 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin-bottom: 8px;
-    letter-spacing: -0.5px;
+    margin-bottom: 6px;
+    filter: drop-shadow(0 0 25px rgba(255, 117, 140, 0.3));
 }
 .hero p { 
     color: #94A3B8; 
-    font-size: 1.1rem; 
+    font-size: 1.15rem; 
     letter-spacing: 0.5px; 
     margin-top: 0; 
     font-weight: 300;
 }
 
-/* Profile Photo Wrapper */
+/* Profile Photo Wrap with Anime Ring */
 .profile-photo-wrap {
     display: flex;
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 25px;
 }
 .profile-photo-wrap img {
-    width: 200px;
-    height: 200px;
+    width: 190px;
+    height: 190px;
     border-radius: 50%;
-    border: 3px solid transparent;
+    border: 4px solid transparent;
     background:
-        linear-gradient(#1E293B, #1E293B) padding-box,
-        linear-gradient(135deg, #818CF8, #A78BFA, #22D3EE) border-box;
-    box-shadow: 0 0 40px rgba(139, 92, 246, 0.3);
+        linear-gradient(#0F172A, #0F172A) padding-box,
+        linear-gradient(135deg, #FF758C, #8B5CF6, #3B82F6) border-box;
+    box-shadow: 0 0 35px rgba(139, 92, 246, 0.4), inset 0 0 15px rgba(255, 117, 140, 0.3);
     object-fit: cover;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 .profile-photo-wrap img:hover {
-    transform: scale(1.03);
-    box-shadow: 0 0 50px rgba(139, 92, 246, 0.5);
+    transform: scale(1.05) rotate(2deg);
+    box-shadow: 0 0 50px rgba(255, 117, 140, 0.6), inset 0 0 20px rgba(59, 130, 246, 0.5);
 }
 
-/* Profile Card */
+/* Glassmorphism Profile Card */
 .profile-card {
-    max-width: 450px;
+    max-width: 480px;
     margin: 30px auto 0 auto;
-    background: rgba(30, 41, 59, 0.6);
-    border: 1px solid rgba(148, 163, 184, 0.1);
-    border-radius: 20px;
-    padding: 32px 36px;
+    background: rgba(15, 23, 42, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    padding: 35px 40px;
     text-align: center;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5), 0 0 20px rgba(139, 92, 246, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+.profile-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, #FF758C, #8B5CF6, #3B82F6);
 }
 .profile-card h2 {
-    color: #F1F5F9;
-    font-family: 'Inter', 'Prompt', sans-serif;
-    font-size: 1.5rem;
+    color: #FFFFFF;
+    font-family: 'Outfit', 'Prompt', sans-serif;
+    font-size: 1.65rem;
     font-weight: 700;
-    margin: 0 0 20px 0;
+    margin: 0 0 24px 0;
+    letter-spacing: 0.5px;
 }
 .info-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 14px 4px;
-    border-top: 1px solid rgba(148, 163, 184, 0.15);
-    color: #E2E8F0;
-    font-size: 1rem;
+    padding: 15px 8px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    color: #CBD5E1;
+    font-size: 1.05rem;
 }
 .info-row:first-of-type { border-top: none; }
-.info-row span.label { color: #94A3B8; font-weight: 400; }
-.info-row span.value { font-weight: 600; color: #A5B4FC; letter-spacing: 0.5px; }
+.info-row span.label { 
+    color: #94A3B8; 
+    font-weight: 400; 
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.info-row span.value { 
+    font-weight: 600; 
+    color: #F472B6; 
+    background: rgba(244, 114, 182, 0.1);
+    padding: 4px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(244, 114, 182, 0.2);
+    letter-spacing: 0.5px; 
+}
 
 /* Hide default Streamlit elements */
 footer, #MainMenu { visibility: hidden; }
@@ -114,19 +138,17 @@ footer, #MainMenu { visibility: hidden; }
 
 /* Sidebar Styling */
 [data-testid="stSidebar"] {
-    background: #0F1525 !important;
-    border-right: 1px solid rgba(148, 163, 184, 0.1) !important;
+    background: #090D16 !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.05) !important;
 }
-[data-testid="stSidebarNav"] {
-    padding-top: 20px;
-}
+[data-testid="stSidebarNav"] { padding-top: 20px; }
 [data-testid="stSidebarNav"]::before {
-    content: "ML HUB NAVIGATION";
+    content: "ANIME HUB MENU";
     display: block;
     margin: 0 20px 20px 20px;
     padding-bottom: 16px;
-    border-bottom: 1px solid rgba(148, 163, 184, 0.15);
-    font-family: 'Inter', sans-serif;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    font-family: 'Outfit', sans-serif;
     font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 2px;
@@ -135,26 +157,26 @@ footer, #MainMenu { visibility: hidden; }
 [data-testid="stSidebarNav"] a {
     margin: 4px 12px !important;
     padding: 12px 16px !important;
-    border-radius: 10px;
+    border-radius: 12px;
     color: #94A3B8 !important;
     font-family: 'Prompt', sans-serif;
     font-weight: 500;
     font-size: 0.95rem;
-    transition: all 0.2s ease;
+    transition: all 0.25s ease;
     background: transparent !important;
 }
 [data-testid="stSidebarNav"] a:hover {
-    background: rgba(99, 102, 241, 0.1) !important;
-    color: #C7D2FE !important;
+    background: rgba(255, 117, 140, 0.1) !important;
+    color: #FF758C !important;
 }
 [data-testid="stSidebarNav"] a[aria-current="page"] {
-    background: linear-gradient(90deg, rgba(99, 102, 241, 0.2) 0%, transparent 100%) !important;
-    color: #A5B4FC !important;
-    border-left: 3px solid #818CF8;
+    background: linear-gradient(90deg, rgba(255, 117, 140, 0.15) 0%, transparent 100%) !important;
+    color: #FF758C !important;
+    border-left: 3px solid #FF758C;
     font-weight: 600;
 }
 
-/* เปลี่ยนข้อความเมนู: app -> หน้าหลัก, about -> ผู้พัฒนา */
+/* Menu label overrides */
 [data-testid="stSidebarNav"] li:nth-child(1) a * { font-size: 0 !important; }
 [data-testid="stSidebarNav"] li:nth-child(1) a::after { content: "🏠 หน้าหลัก"; font-size: 0.95rem !important; }
 [data-testid="stSidebarNav"] li:nth-child(2) a * { font-size: 0 !important; }
@@ -164,51 +186,65 @@ footer, #MainMenu { visibility: hidden; }
 .custom-footer {
     text-align: center;
     color: #64748B;
-    margin-top: 50px;
+    margin-top: 60px;
     padding: 30px 20px;
     font-size: 0.85rem;
-    border-top: 1px solid rgba(148, 163, 184, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 </style>
-""", unsafe_allow_html=True)
+""",
+    unsafe_allow_html=True,
+)
 
-st.markdown("""
+st.markdown(
+    """
 <div class="hero">
     <h1>ผู้พัฒนา</h1>
-    <p>ข้อมูลผู้จัดทำโปรเจค Anime Recommendation</p>
+    <p>✨ ข้อมูลผู้จัดทำโปรเจค Anime Recommendation ✨</p>
 </div>
-""", unsafe_allow_html=True)
+""",
+    unsafe_allow_html=True,
+)
 
-# โหลดรูปภาพ (ตรวจสอบให้แน่ใจว่าไฟล์ assets/1.jpg มีอยู่จริง)
+# โหลดรูปภาพ
 photo_path = Path(__file__).resolve().parent.parent / "assets" / "1.jpg"
 try:
-    photo_b64 = base64.b64encode(photo_path.read_bytes()).decode()
-    st.markdown(
-        f'<div class="profile-photo-wrap"><img src="data:image/jpeg;base64,{photo_b64}" alt="Profile Photo"></div>',
-        unsafe_allow_html=True,
-    )
+  photo_b64 = base64.b64encode(photo_path.read_bytes()).decode()
+  st.markdown(
+      f'<div class="profile-photo-wrap"><img src="data:image/jpeg;base64,{photo_b64}" alt="Profile Photo"></div>',
+      unsafe_allow_html=True,
+  )
 except FileNotFoundError:
-    st.markdown(
-        '<div class="profile-photo-wrap"><div style="width:200px;height:200px;border-radius:50%;background:#1E293B;border:3px solid #818CF8;display:flex;align-items:center;justify-content:center;font-size:4rem;">🧑‍💻</div></div>',
-        unsafe_allow_html=True,
-    )
+  st.markdown(
+      '<div class="profile-photo-wrap"><div'
+      ' style="width:190px;height:190px;border-radius:50%;background:#0F172A;border:4px'
+      ' solid'
+      ' #FF758C;display:flex;align-items:center;justify-content:center;font-size:4rem;">🧑‍💻</div></div>',
+      unsafe_allow_html=True,
+  )
 
-st.markdown("""
+st.markdown(
+    """
 <div class="profile-card">
     <h2>ทินภัทร ช้อยสามนาค</h2>
     <div class="info-row">
-        <span class="label">รหัสนักศึกษา</span>
+        <span class="label">🆔 รหัสนักศึกษา</span>
         <span class="value">664245011</span>
     </div>
     <div class="info-row">
-        <span class="label">หมู่เรียน</span>
+        <span class="label">🏫 หมู่เรียน</span>
         <span class="value">Sec. 66/43</span>
     </div>
 </div>
-""", unsafe_allow_html=True)
+""",
+    unsafe_allow_html=True,
+)
 
-st.markdown("""
+st.markdown(
+    """
 <div class="custom-footer">
-    Anime Recommendation Projects 2026
+    Anime Recommendation System &bull; Powered by Streamlit &copy; 2026
 </div>
-""", unsafe_allow_html=True)
+""",
+    unsafe_allow_html=True,
+)
