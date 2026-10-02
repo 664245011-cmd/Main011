@@ -289,7 +289,7 @@ APPS = [
         "งานนำเสนอสไลด์โปรเจกต์ Anime Recommendation บน Canva",
         "https://canva.link/3u8r9s574edov6g",
         "เข้าชม Canva 🎬",
-        "https://upload.wikimedia.org/wikipedia/commons/0/08/Canva_icon_2021.svg",
+        "https://logos-world.net/wp-content/uploads/2021/11/Canva-Logo.png",
     ),
 ]
 
