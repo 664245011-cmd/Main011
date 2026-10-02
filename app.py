@@ -10,20 +10,19 @@ st.set_page_config(
 st.markdown(
     """
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&family=Prompt:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;800&display=swap');
 
-/* Main App Layout - Cyberpunk Cyber Glow */
+/* Main App Layout - Premium Dark Anime Theme */
 .stApp {
-    background: #060713;
+    background-color: #030712;
     background-image: 
-        radial-gradient(circle at 15% 15%, rgba(139, 92, 246, 0.22) 0%, transparent 45%),
-        radial-gradient(circle at 85% 85%, rgba(6, 182, 212, 0.18) 0%, transparent 45%),
-        radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.12) 0%, transparent 55%);
+        radial-gradient(circle at 15% 10%, rgba(225, 29, 72, 0.12) 0%, transparent 40%),
+        radial-gradient(circle at 85% 90%, rgba(79, 70, 229, 0.15) 0%, transparent 40%);
     background-attachment: fixed;
 }
 
 html, body, [class*="css"] {
-    font-family: 'Plus Jakarta Sans', 'Prompt', sans-serif;
+    font-family: 'Prompt', 'Outfit', sans-serif;
     color: #F8FAFC;
 }
 
@@ -34,32 +33,29 @@ html, body, [class*="css"] {
 }
 
 .hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 7px 20px;
+    display: inline-block;
+    padding: 6px 16px;
     border-radius: 30px;
-    background: rgba(139, 92, 246, 0.12);
-    border: 1px solid rgba(139, 92, 246, 0.35);
-    color: #A78BFA;
+    background: rgba(225, 29, 72, 0.1);
+    border: 1px solid rgba(225, 29, 72, 0.3);
+    color: #FB7185;
     font-size: 0.85rem;
-    font-weight: 700;
-    margin-bottom: 18px;
-    letter-spacing: 1.5px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
     text-transform: uppercase;
-    box-shadow: 0 0 20px rgba(139, 92, 246, 0.2);
 }
 
 .hero h1 {
-    font-family: 'Plus Jakarta Sans', 'Prompt', sans-serif;
-    font-size: 3.5rem;
+    font-family: 'Outfit', 'Prompt', sans-serif;
+    font-size: 3.4rem;
     font-weight: 800;
-    background: linear-gradient(135deg, #FFFFFF 10%, #F472B6 45%, #C084FC 75%, #38BDF8 100%);
+    background: linear-gradient(135deg, #FFFFFF 20%, #FB7185 60%, #818CF8 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 12px;
     letter-spacing: -0.5px;
-    filter: drop-shadow(0 0 35px rgba(139, 92, 246, 0.35));
+    filter: drop-shadow(0 0 30px rgba(225, 29, 72, 0.2));
 }
 
 .hero p {
@@ -72,19 +68,19 @@ html, body, [class*="css"] {
 
 /* Modern Glass Cards */
 .card {
-    background: linear-gradient(145deg, rgba(20, 16, 41, 0.75), rgba(10, 8, 22, 0.85));
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 24px;
+    background: linear-gradient(145deg, rgba(17, 24, 39, 0.7), rgba(11, 15, 25, 0.8));
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 20px;
     padding: 30px 24px;
-    height: 290px;
+    height: 280px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     margin-bottom: 24px;
-    box-shadow: 0 12px 32px -10px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
     position: relative;
     overflow: hidden;
 }
@@ -93,20 +89,20 @@ html, body, [class*="css"] {
     content: '';
     position: absolute;
     inset: 0;
-    border-radius: 24px;
-    border: 1px solid rgba(167, 139, 250, 0);
+    border-radius: 20px;
+    border: 1px solid rgba(251, 113, 133, 0);
     transition: border-color 0.4s ease;
     pointer-events: none;
 }
 
 .card:hover {
-    transform: translateY(-10px) scale(1.01);
-    box-shadow: 0 20px 45px -12px rgba(139, 92, 246, 0.4);
-    background: linear-gradient(145deg, rgba(32, 25, 61, 0.85), rgba(16, 12, 34, 0.95));
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px -15px rgba(225, 29, 72, 0.3);
+    background: linear-gradient(145deg, rgba(22, 30, 49, 0.8), rgba(15, 23, 42, 0.9));
 }
 
 .card:hover::after {
-    border-color: rgba(167, 139, 250, 0.4);
+    border-color: rgba(251, 113, 133, 0.4);
 }
 
 .card-top {
@@ -119,33 +115,32 @@ html, body, [class*="css"] {
 .card .icon {
     font-size: 2rem;
     padding: 12px;
-    background: rgba(139, 92, 246, 0.1);
-    border-radius: 16px;
-    border: 1px solid rgba(139, 92, 246, 0.25);
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: inset 0 0 12px rgba(139, 92, 246, 0.15);
 }
 
 .card h3 {
     color: #F8FAFC;
-    font-family: 'Plus Jakarta Sans', 'Prompt', sans-serif;
+    font-family: 'Outfit', 'Prompt', sans-serif;
     margin: 0;
-    font-size: 1.18rem;
+    font-size: 1.15rem;
     font-weight: 700;
     line-height: 1.4;
 }
 
 .card p {
     color: #94A3B8;
-    font-size: 0.92rem;
+    font-size: 0.9rem;
     line-height: 1.6;
     margin: 0;
     font-weight: 300;
 }
 
-/* Cyber Neon Button */
+/* Premium Button */
 .btn {
     display: flex;
     align-items: center;
@@ -153,21 +148,20 @@ html, body, [class*="css"] {
     gap: 8px;
     text-align: center;
     text-decoration: none !important;
-    padding: 13px 20px;
-    border-radius: 14px;
-    font-weight: 700;
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-weight: 600;
     font-size: 0.95rem;
     color: #FFFFFF !important;
-    background: linear-gradient(135deg, #EC4899 0%, #8B5CF6 50%, #06B6D4 100%);
-    background-size: 200% auto;
-    transition: all 0.4s ease;
-    box-shadow: 0 4px 20px rgba(139, 92, 246, 0.35);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: linear-gradient(135deg, #E11D48 0%, #4F46E5 100%);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(225, 29, 72, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .btn:hover {
-    background-position: right center;
-    box-shadow: 0 6px 28px rgba(236, 72, 153, 0.55);
+    background: linear-gradient(135deg, #F43F5E 0%, #6366F1 100%);
+    box-shadow: 0 6px 25px rgba(225, 29, 72, 0.5);
     transform: translateY(-2px);
 }
 
@@ -176,9 +170,9 @@ html, body, [class*="css"] {
     align-items: center;
     text-align: center;
     color: #64748B;
-    font-size: 0.88rem;
-    font-weight: 600;
-    letter-spacing: 1.5px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 1px;
     margin: 20px 0 35px 0;
     text-transform: uppercase;
 }
@@ -189,8 +183,8 @@ html, body, [class*="css"] {
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.section-divider::before { margin-right: 18px; }
-.section-divider::after { margin-left: 18px; }
+.section-divider::before { margin-right: 15px; }
+.section-divider::after { margin-left: 15px; }
 
 .custom-footer {
     text-align: center;
@@ -204,7 +198,7 @@ html, body, [class*="css"] {
 footer, #MainMenu { visibility: hidden; }
 
 [data-testid="stSidebar"] {
-    background: #0A0817 !important;
+    background: #0B0F19 !important;
     border-right: 1px solid rgba(255, 255, 255, 0.05) !important;
 }
 </style>
@@ -245,45 +239,53 @@ APPS = [
         "https://9suvavqbzjuffsung5rryh.streamlit.app/",
         "ใช้งานระบบ →",
     ),
+   (
+        "⛅️",
+        "Canva ",
+        "Canva",
+        "https://canva.link/3u8r9s574edov6g",
+        "เข้า Canva →",
+    ),
 ]
 
+# จัดเลย์เอาต์การ์ด: แถวแรก 3 ใบ และแถวที่ 4 วางตรงกลาง
 cols = st.columns(3)
 for i, (icon, title, desc, url, btn_text) in enumerate(APPS):
-    if i < 3:
-        with cols[i]:
-            st.markdown(
-                f"""
-                <div class="card">
-                    <div>
-                        <div class="card-top">
-                            <div class="icon">{icon}</div>
-                            <h3>{title}</h3>
-                        </div>
-                        <p>{desc}</p>
+  if i < 3:
+    with cols[i]:
+      st.markdown(
+          f"""
+            <div class="card">
+                <div>
+                    <div class="card-top">
+                        <div class="icon">{icon}</div>
+                        <h3>{title}</h3>
                     </div>
-                    <a class="btn" href="{url}" target="_blank">{btn_text}</a>
+                    <p>{desc}</p>
                 </div>
-                """,
-                unsafe_allow_html=True,
-            )
-    else:
-        left, center, right = st.columns([1, 1.0, 1])
-        with center:
-            st.markdown(
-                f"""
-                <div class="card">
-                    <div>
-                        <div class="card-top">
-                            <div class="icon">{icon}</div>
-                            <h3>{title}</h3>
-                        </div>
-                        <p>{desc}</p>
+                <a class="btn" href="{url}" target="_blank">{btn_text}</a>
+            </div>
+            """,
+          unsafe_allow_html=True,
+      )
+  else:
+    left, center, right = st.columns([1, 1.0, 1])
+    with center:
+      st.markdown(
+          f"""
+            <div class="card">
+                <div>
+                    <div class="card-top">
+                        <div class="icon">{icon}</div>
+                        <h3>{title}</h3>
                     </div>
-                    <a class="btn" href="{url}" target="_blank">{btn_text}</a>
+                    <p>{desc}</p>
                 </div>
-                """,
-                unsafe_allow_html=True,
-            )
+                <a class="btn" href="{url}" target="_blank">{btn_text}</a>
+            </div>
+            """,
+          unsafe_allow_html=True,
+      )
 
 st.markdown(
     """
