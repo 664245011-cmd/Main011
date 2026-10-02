@@ -285,7 +285,7 @@ APPS = [
         "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=600",
     ),
     (
-        "⛅️",
+        "⛅️️",
         "Canva Presentation",
         "งานนำเสนอสไลด์โปรเจกต์ Anime Recommendation บน Canva",
         "https://canva.link/3u8r9s574edov6g",
@@ -298,7 +298,7 @@ APPS = [
         "แบบฝีกหัดสไลด์ บน Canva",
         "https://canva.link/n0t7yuf9venb98p",
         "เข้าชม Canva 🎬",
-        "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSYNPGIah1A98vztjRTsUrN9hhmD5wBxsFDlRgjVku-pSuQmj99",
+        "https://cdn-icons-png.flaticon.com/512/2991/2991108.png",
     ),
     (
         "⛅️",
