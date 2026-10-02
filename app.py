@@ -239,7 +239,13 @@ APPS = [
         "https://9suvavqbzjuffsung5rryh.streamlit.app/",
         "ใช้งานระบบ →",
     ),
-   
+   (
+        "🎯",
+        "Canva ",
+        "Canva",
+        "https://canva.link/3u8r9s574edov6g",
+        "เข้า Canva →",
+    ),
 ]
 
 # จัดเลย์เอาต์การ์ด: แถวแรก 3 ใบ และแถวที่ 4 วางตรงกลาง
