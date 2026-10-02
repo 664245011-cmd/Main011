@@ -298,7 +298,7 @@ APPS = [
         "แบบฝีกหัดสไลด์ บน Canva",
         "https://canva.link/n0t7yuf9venb98p",
         "เข้าชม Canva 🎬",
-        "https://logos-world.net/wp-content/uploads/2021/11/Canva-Logo.png",
+        "blob:https://www.facebook.com/bf2191c8-0ec8-458a-aa93-9bd00a48037e",
     ),
     (
         "⛅️",
