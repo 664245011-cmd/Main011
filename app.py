@@ -1,4 +1,3 @@
-from neo4j import GraphDatabase
 import streamlit as st
 
 st.set_page_config(
@@ -8,68 +7,12 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
 )
 
-# --- ดึงข้อมูลการเชื่อมต่อ Neo4j และ Admin Password จาก Secrets ---
-try:
-  NEO4J_URI = st.secrets["neo4j"]["uri"]
-  NEO4J_USER = st.secrets["neo4j"]["username"]
-  NEO4J_PASSWORD = st.secrets["neo4j"]["password"]
-  # ดึงรหัสผ่าน Admin จาก Secrets (ถ้าไม่มีให้ใช้ 1234 เป็นค่าเริ่มต้น)
-  ADMIN_PASSWORD = st.secrets["neo4j"].get("ADMIN_PASSWORD", "1234")
-  driver = GraphDatabase.driver(NEO4J_URI, auth=(NEO4J_USER, NEO4J_PASSWORD))
-except Exception as e:
-  driver = None
-  ADMIN_PASSWORD = "1234"
-
-
-# --- ฟังก์ชันจัดการข้อมูล Neo4j ---
-def get_all_anime():
-  """ดึงรายชื่อ Anime ทั้งหมดจาก Neo4j"""
-  if not driver:
-    return []
-  query = "MATCH (a:Anime) RETURN a.id AS id, a.title AS title, a.genre AS genre ORDER BY a.id"
-  try:
-    with driver.session() as session:
-      result = session.run(query)
-      return [record.data() for record in result]
-  except Exception:
-    return []
-
-
-def add_anime(anime_id, title, genre):
-  """เพิ่มหรืออัปเดต Anime"""
-  if not driver:
-    return False
-  query = """
-    MERGE (a:Anime {id: $anime_id})
-    SET a.title = $title, a.genre = $genre
-    """
-  try:
-    with driver.session() as session:
-      session.run(query, anime_id=anime_id, title=title, genre=genre)
-    return True
-  except Exception:
-    return False
-
-
-def delete_anime(anime_id):
-  """ลบ Anime และความสัมพันธ์ทั้งหมดออก"""
-  if not driver:
-    return False
-  query = "MATCH (a:Anime {id: $anime_id}) DETACH DELETE a"
-  try:
-    with driver.session() as session:
-      session.run(query, anime_id=anime_id)
-    return True
-  except Exception:
-    return False
-
-
-# --- Custom CSS ---
 st.markdown(
     """
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;800&display=swap');
 
+/* Overall Dark Background */
 .stApp {
     background-color: #0B0B0E;
     background-image: linear-gradient(180deg, #050507 0%, #0B0B0E 100%);
@@ -81,6 +24,7 @@ html, body, [class*="css"] {
     color: #FFFFFF;
 }
 
+/* Header Navbar - Major Style */
 .major-navbar {
     display: flex;
     align-items: center;
@@ -112,6 +56,16 @@ html, body, [class*="css"] {
     color: #A1A1AA;
 }
 
+.major-nav-links span {
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.major-nav-links span:hover {
+    color: #E50914;
+}
+
+/* Banner Featured Hero Section with Anime Wallpaper Background */
 .hero-banner {
     width: 100%;
     height: 230px;
@@ -142,6 +96,7 @@ html, body, [class*="css"] {
     font-weight: 300;
 }
 
+/* Major Section Red Gradient Title Bar */
 .section-header-red {
     background: linear-gradient(90deg, #E50914 0%, #8B0000 40%, rgba(11, 11, 14, 0) 100%);
     padding: 10px 20px;
@@ -150,13 +105,13 @@ html, body, [class*="css"] {
     font-weight: 700;
     color: #FFFFFF;
     margin-bottom: 20px;
-    margin-top: 30px;
     display: flex;
     align-items: center;
     gap: 10px;
     letter-spacing: 0.5px;
 }
 
+/* Poster Card */
 .movie-card {
     background: #141419;
     border-radius: 12px;
@@ -234,6 +189,7 @@ html, body, [class*="css"] {
     overflow: hidden;
 }
 
+/* Major Booking Button Style */
 .btn-book {
     display: block;
     width: 100%;
@@ -256,6 +212,7 @@ html, body, [class*="css"] {
     color: #FFF275 !important;
 }
 
+/* Footer */
 .custom-footer {
     text-align: center;
     color: #71717A;
@@ -296,7 +253,6 @@ footer, #MainMenu { visibility: hidden; }
     unsafe_allow_html=True,
 )
 
-# --- ส่วนแสดงลิงก์เครื่องมือแนะนำ ---
 st.markdown(
     '<div class="section-header-red">🎬 ระบบและเครื่องมือแนะนำทั้งหมด</div>',
     unsafe_allow_html=True,
@@ -339,9 +295,9 @@ APPS = [
 
 cols = st.columns(4)
 for i, (icon, title, desc, url, btn_text, img_url) in enumerate(APPS):
-  with cols[i]:
-    st.markdown(
-        f"""
+    with cols[i]:
+        st.markdown(
+            f"""
             <div class="movie-card">
                 <div class="movie-poster" style="background-image: url('{img_url}');">
                     <div class="poster-overlay">
@@ -357,83 +313,9 @@ for i, (icon, title, desc, url, btn_text, img_url) in enumerate(APPS):
                 </div>
             </div>
             """,
-        unsafe_allow_html=True,
-    )
+            unsafe_allow_html=True,
+        )
 
-# --- ส่วนจัดการข้อมูลสำหรับ Admin ---
-st.markdown(
-    '<div class="section-header-red">⚙️ จัดการข้อมูลอนิเมะ (Admin Only)</div>',
-    unsafe_allow_html=True,
-)
-
-admin_pass = st.text_input(
-    "🔑 กรอกรหัสผ่าน Admin เพื่อจัดการข้อมูล", type="password"
-)
-
-# ตรวจสอบรหัสผ่านตรงกับ Secrets หรือไม่ (เช่น 1234)
-if admin_pass == str(ADMIN_PASSWORD):
-  st.success("🔓 เข้าสู่ระบบ Admin เรียบร้อยแล้ว")
-
-  tab_list, tab_add, tab_delete = st.tabs(
-      ["📋 รายชื่อ Anime ในระบบ", "➕ เพิ่ม Anime ใหม่", "🗑️ ลบ Anime"]
-  )
-
-  # --- แท็บ 1: แสดงรายชื่ออนิเมะที่มี ---
-  with tab_list:
-    st.write("### 📋 อนิเมะทั้งหมดในฐานข้อมูล Neo4j")
-    anime_list = get_all_anime()
-    if anime_list:
-      st.dataframe(anime_list, use_container_width=True)
-    else:
-      st.info("ไม่พบข้อมูล หรือยังไม่มีการเชื่อมต่อกับ Neo4j")
-
-  # --- แท็บ 2: เพิ่ม Anime ---
-  with tab_add:
-    st.write("### ➕ เพิ่มข้อมูล Anime เข้าสู่ฐานข้อมูล Neo4j")
-    with st.form("add_anime_form"):
-      new_id = st.text_input("ID อนิเมะ (เช่น A011):")
-      new_title = st.text_input("ชื่อเรื่อง Anime:")
-      new_genre = st.text_input("หมวดหมู่ / แนว (Genre):")
-
-      submit_add = st.form_submit_button("➕ บันทึกข้อมูล Anime")
-
-      if submit_add:
-        if new_id and new_title:
-          if add_anime(new_id, new_title, new_genre):
-            st.success(f"เพิ่ม Anime '{new_title}' ({new_id}) เรียบร้อยแล้ว!")
-            st.rerun()
-          else:
-            st.error("ไม่สามารถเชื่อมต่อฐานข้อมูล Neo4j ได้")
-        else:
-          st.warning("กรุณากรอก ID และ ชื่อเรื่อง Anime ให้ครบถ้วน")
-
-  # --- แท็บ 3: ลบ Anime ---
-  with tab_delete:
-    st.write("### 🗑️️ ลบ Anime ออกจากฐานข้อมูล Neo4j")
-    anime_list = get_all_anime()
-
-    if anime_list:
-      options = [
-          f"{item.get('id')} - {item.get('title')}" for item in anime_list
-      ]
-      selected_option = st.selectbox("เลือก Anime ที่ต้องการลบ:", options)
-
-      if st.button("🗑️ ยืนยันลบ Anime", type="primary"):
-        selected_id = selected_option.split(" - ")[0]
-        if delete_anime(selected_id):
-          st.success(f"ลบ Anime ID: {selected_id} เรียบร้อยแล้ว!")
-          st.rerun()
-        else:
-          st.error("เกิดข้อผิดพลาดในการลบข้อมูล")
-    else:
-      st.info("ไม่มีรายการ Anime ให้ลบ")
-
-elif admin_pass != "":
-  st.error("❌ รหัสผ่าน Admin ไม่ถูกต้อง")
-else:
-  st.info("🔒 กรุณากรอกรหัสผ่าน Admin เพื่อใช้งานฟังก์ชันจัดการข้อมูล")
-
-# Footer
 st.markdown(
     """
     <div class="custom-footer">
