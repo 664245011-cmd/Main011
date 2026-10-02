@@ -234,7 +234,7 @@ footer, #MainMenu { visibility: hidden; }
 <div class="major-navbar">
     <div class="major-logo">
         <span style="font-size: 1.8rem;">🍿</span>
-        <span class="brand">MAJOR ANIME</span>
+        <span class="brand">ANIME</span>
     </div>
     <div class="major-nav-links">
         <span>หน้าแรก</span>
