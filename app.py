@@ -298,7 +298,7 @@ APPS = [
         "แบบฝีกหัดสไลด์ บน Canva",
         "https://canva.link/n0t7yuf9venb98p",
         "เข้าชม Canva 🎬",
-        "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRiftwbdeBg32V_M-MM6yKhCq0qV1qW-D2AILZ5gCHp6loft8s9",
+        "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSYNPGIah1A98vztjRTsUrN9hhmD5wBxsFDlRgjVku-pSuQmj99",
     ),
     (
         "⛅️",
