@@ -2,7 +2,7 @@ import streamlit as st
 
 st.set_page_config(
     page_title="Anime Recommendation Hub",
-    page_icon="🎌",
+    page_icon="🎬",
     layout="wide",
     initial_sidebar_state="collapsed",
 )
@@ -12,18 +12,18 @@ st.markdown(
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;800&display=swap');
 
-/* Main App Layout - Soft Sakura Light Anime Theme */
+/* Main App Layout - Major Cinema Theme (Black, Gold & Red) */
 .stApp {
-    background-color: #FFF5F7;
+    background-color: #08070A;
     background-image: 
-        radial-gradient(circle at 15% 10%, rgba(255, 182, 193, 0.4) 0%, transparent 45%),
-        radial-gradient(circle at 85% 90%, rgba(255, 218, 224, 0.4) 0%, transparent 45%);
+        radial-gradient(circle at 50% 0%, rgba(229, 9, 20, 0.25) 0%, transparent 50%),
+        radial-gradient(circle at 85% 90%, rgba(212, 175, 55, 0.15) 0%, transparent 40%);
     background-attachment: fixed;
 }
 
 html, body, [class*="css"] {
     font-family: 'Prompt', 'Outfit', sans-serif;
-    color: #334155;
+    color: #F5F5F7;
 }
 
 /* Hero Section */
@@ -34,75 +34,87 @@ html, body, [class*="css"] {
 
 .hero-badge {
     display: inline-block;
-    padding: 6px 16px;
+    padding: 6px 18px;
     border-radius: 30px;
-    background: rgba(244, 63, 94, 0.1);
-    border: 1px solid rgba(244, 63, 94, 0.25);
-    color: #E11D48;
+    background: linear-gradient(135deg, rgba(229, 9, 20, 0.2), rgba(212, 175, 55, 0.2));
+    border: 1px solid #D4AF37;
+    color: #F3C623;
     font-size: 0.85rem;
-    font-weight: 600;
+    font-weight: 700;
     margin-bottom: 15px;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
 }
 
 .hero h1 {
     font-family: 'Outfit', 'Prompt', sans-serif;
-    font-size: 3.4rem;
+    font-size: 3.5rem;
     font-weight: 800;
-    background: linear-gradient(135deg, #E11D48 0%, #FB7185 50%, #818CF8 100%);
+    background: linear-gradient(135deg, #FFFFFF 20%, #F3C623 60%, #E50914 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 12px;
     letter-spacing: -0.5px;
-    filter: drop-shadow(0 4px 15px rgba(225, 29, 72, 0.15));
+    filter: drop-shadow(0 0 25px rgba(229, 9, 20, 0.4));
 }
 
 .hero p {
-    color: #64748B;
+    color: #A1A1AA;
     font-size: 1.15rem;
     letter-spacing: 0.3px;
     margin-top: 0;
-    font-weight: 400;
+    font-weight: 300;
 }
 
-/* Modern Glass Cards */
+/* Movie Ticket Style Card */
 .card {
-    background: rgba(255, 255, 255, 0.85);
-    border: 1px solid rgba(255, 182, 193, 0.4);
-    border-radius: 20px;
-    padding: 30px 24px;
-    height: 280px;
+    background: linear-gradient(145deg, #121016, #1A1721);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 16px;
+    padding: 28px 24px;
+    height: 290px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
     margin-bottom: 24px;
-    box-shadow: 0 10px 25px -5px rgba(225, 29, 72, 0.08);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
     position: relative;
     overflow: hidden;
+}
+
+/* Ticket Side Notches (รอยเจาะตั๋วหนัง) */
+.card::before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    background-color: #08070A;
+    border-radius: 50%;
+    box-shadow: inset -2px 0 3px rgba(212, 175, 55, 0.3);
 }
 
 .card::after {
     content: '';
     position: absolute;
-    inset: 0;
-    border-radius: 20px;
-    border: 1px solid rgba(244, 63, 94, 0);
-    transition: border-color 0.4s ease;
-    pointer-events: none;
+    right: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    background-color: #08070A;
+    border-radius: 50%;
+    box-shadow: inset 2px 0 3px rgba(212, 175, 55, 0.3);
 }
 
 .card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 35px -10px rgba(225, 29, 72, 0.18);
-    background: rgba(255, 255, 255, 0.95);
-}
-
-.card:hover::after {
-    border-color: rgba(244, 63, 94, 0.3);
+    transform: translateY(-8px) scale(1.02);
+    border-color: #F3C623;
+    box-shadow: 0 15px 35px rgba(229, 9, 20, 0.35), 0 0 15px rgba(212, 175, 55, 0.2);
 }
 
 .card-top {
@@ -114,33 +126,33 @@ html, body, [class*="css"] {
 
 .card .icon {
     font-size: 2rem;
-    padding: 12px;
-    background: rgba(255, 228, 230, 0.6);
-    border-radius: 14px;
-    border: 1px solid rgba(253, 164, 175, 0.3);
+    padding: 10px 14px;
+    background: rgba(229, 9, 20, 0.15);
+    border-radius: 12px;
+    border: 1px solid rgba(229, 9, 20, 0.4);
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .card h3 {
-    color: #1E293B;
+    color: #FFFFFF;
     font-family: 'Outfit', 'Prompt', sans-serif;
     margin: 0;
-    font-size: 1.15rem;
+    font-size: 1.2rem;
     font-weight: 700;
-    line-height: 1.4;
+    line-height: 1.3;
 }
 
 .card p {
-    color: #64748B;
+    color: #A1A1AA;
     font-size: 0.9rem;
     line-height: 1.6;
     margin: 0;
-    font-weight: 400;
+    font-weight: 300;
 }
 
-/* Premium Button */
+/* Major Cinema Red/Gold Button */
 .btn {
     display: flex;
     align-items: center;
@@ -149,19 +161,21 @@ html, body, [class*="css"] {
     text-align: center;
     text-decoration: none !important;
     padding: 12px 20px;
-    border-radius: 12px;
-    font-weight: 600;
+    border-radius: 10px;
+    font-weight: 700;
     font-size: 0.95rem;
     color: #FFFFFF !important;
-    background: linear-gradient(135deg, #F43F5E 0%, #818CF8 100%);
+    background: linear-gradient(135deg, #E50914 0%, #B81D24 100%);
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(244, 63, 94, 0.25);
-    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 4px 15px rgba(229, 9, 20, 0.4);
+    border: 1px solid #FF3B30;
+    letter-spacing: 0.5px;
 }
 
 .btn:hover {
-    background: linear-gradient(135deg, #E11D48 0%, #6366F1 100%);
-    box-shadow: 0 6px 20px rgba(244, 63, 94, 0.4);
+    background: linear-gradient(135deg, #FF1E27 0%, #E50914 100%);
+    box-shadow: 0 6px 25px rgba(229, 9, 20, 0.7);
+    color: #FFF275 !important;
     transform: translateY(-2px);
 }
 
@@ -169,18 +183,18 @@ html, body, [class*="css"] {
     display: flex;
     align-items: center;
     text-align: center;
-    color: #94A3B8;
+    color: #D4AF37;
     font-size: 0.9rem;
-    font-weight: 600;
-    letter-spacing: 1px;
-    margin: 20px 0 35px 0;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin: 25px 0 35px 0;
     text-transform: uppercase;
 }
 
 .section-divider::before, .section-divider::after {
     content: '';
     flex: 1;
-    border-bottom: 1px solid rgba(225, 29, 72, 0.15);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.3);
 }
 
 .section-divider::before { margin-right: 15px; }
@@ -188,32 +202,32 @@ html, body, [class*="css"] {
 
 .custom-footer {
     text-align: center;
-    color: #94A3B8;
+    color: #71717A;
     margin-top: 60px;
     padding: 30px 20px;
     font-size: 0.85rem;
-    border-top: 1px solid rgba(225, 29, 72, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 footer, #MainMenu { visibility: hidden; }
 
 [data-testid="stSidebar"] {
-    background: #FFF0F3 !important;
-    border-right: 1px solid rgba(255, 182, 193, 0.3) !important;
+    background: #0F0E13 !important;
+    border-right: 1px solid rgba(212, 175, 55, 0.2) !important;
 }
 </style>
 
 <div class="hero">
-    <div class="hero-badge">⚡ GRAPH-POWERED RECOMMENDATION</div>
+    <div class="hero-badge">🎟️ CINEMA GRAPH SYSTEM</div>
     <h1>ANIME RECOMMENDATION</h1>
-    <p>ระบบแนะนำอนิเมะอัจฉริยะด้วยฐานข้อมูลกราฟความสัมพันธ์ User & Anime</p>
+    <p>ระบบแนะนำอนิเมะอัจฉริยะ คัดสรรจากความสัมพันธ์ User & Anime</p>
 </div>
 """,
     unsafe_allow_html=True,
 )
 
 st.markdown(
-    '<div class="section-divider">ระบบและเครื่องมือทั้งหมด</div>',
+    '<div class="section-divider">🎬 เลือกบริการกดรับตั๋ว / ข้อมูลระบบ</div>',
     unsafe_allow_html=True,
 )
 
@@ -223,28 +237,28 @@ APPS = [
         "โครงสร้างข้อมูล Anime & User",
         "จัดการข้อมูล User และ Anime ด้วยฐานข้อมูลกราฟ Neo4j",
         "https://colab.research.google.com/drive/1KMFRz3LPGn4fD5jBG-ZwCuxoh_yIozvE?usp=sharing",
-        "เปิดใน Colab →",
+        "เปิดใน Colab 🎟️",
     ),
     (
         "👥",
         "วิเคราะห์ความสัมพันธ์ User",
         "วิเคราะห์ความสัมพันธ์ FRIEND_OF และประวัติการดู Anime",
         "https://colab.research.google.com/drive/1UYPIwMs_xU9LFInJJ1FPOMk_e7nA3_Pt?usp=sharing",
-        "เปิดใน Colab →",
+        "เปิดใน Colab 🎟️",
     ),
     (
         "🎯",
         "ระบบแนะนำ Anime",
         "แนะนำ Anime จากความสัมพันธ์และ Anime ที่เพื่อนเคยดู",
         "https://9suvavqbzjuffsung5rryh.streamlit.app/",
-        "ใช้งานระบบ →",
+        "จองตั๋ว / ใช้งานระบบ 🍿",
     ),
    (
         "⛅️",
-        "Canva ",
-        "Canva",
+        "Canva Presentation",
+        "งานนำเสนอโปรเจค Anime Recommendation บน Canva",
         "https://canva.link/3u8r9s574edov6g",
-        "เข้า Canva →",
+        "เปิด Canva 🎬",
     ),
 ]
 
@@ -289,7 +303,7 @@ for i, (icon, title, desc, url, btn_text) in enumerate(APPS):
 st.markdown(
     """
     <div class="custom-footer">
-        Anime Recommendation System &bull; Built with Streamlit & Neo4j &copy; 2026
+        Anime Recommendation System &bull; Cinema Edition Built with Streamlit & Neo4j &copy; 2026
     </div>
     """,
     unsafe_allow_html=True,
