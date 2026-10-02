@@ -8,36 +8,60 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
 )
 
-# --- ดึงข้อมูลการเชื่อมต่อ Neo4j จาก Streamlit Secrets ---
+# --- ดึงข้อมูลการเชื่อมต่อ Neo4j และ Admin Password จาก Secrets ---
 try:
   NEO4J_URI = st.secrets["neo4j"]["uri"]
   NEO4J_USER = st.secrets["neo4j"]["username"]
   NEO4J_PASSWORD = st.secrets["neo4j"]["password"]
+  # ดึงรหัสผ่าน Admin จาก Secrets (ถ้าไม่มีให้ใช้ 1234 เป็นค่าเริ่มต้น)
+  ADMIN_PASSWORD = st.secrets["neo4j"].get("ADMIN_PASSWORD", "1234")
   driver = GraphDatabase.driver(NEO4J_URI, auth=(NEO4J_USER, NEO4J_PASSWORD))
 except Exception as e:
   driver = None
+  ADMIN_PASSWORD = "1234"
 
 
 # --- ฟังก์ชันจัดการข้อมูล Neo4j ---
+def get_all_anime():
+  """ดึงรายชื่อ Anime ทั้งหมดจาก Neo4j"""
+  if not driver:
+    return []
+  query = "MATCH (a:Anime) RETURN a.id AS id, a.title AS title, a.genre AS genre ORDER BY a.id"
+  try:
+    with driver.session() as session:
+      result = session.run(query)
+      return [record.data() for record in result]
+  except Exception:
+    return []
+
+
 def add_anime(anime_id, title, genre):
+  """เพิ่มหรืออัปเดต Anime"""
   if not driver:
     return False
   query = """
     MERGE (a:Anime {id: $anime_id})
     SET a.title = $title, a.genre = $genre
     """
-  with driver.session() as session:
-    session.run(query, anime_id=anime_id, title=title, genre=genre)
-  return True
+  try:
+    with driver.session() as session:
+      session.run(query, anime_id=anime_id, title=title, genre=genre)
+    return True
+  except Exception:
+    return False
 
 
 def delete_anime(anime_id):
+  """ลบ Anime และความสัมพันธ์ทั้งหมดออก"""
   if not driver:
     return False
   query = "MATCH (a:Anime {id: $anime_id}) DETACH DELETE a"
-  with driver.session() as session:
-    session.run(query, anime_id=anime_id)
-  return True
+  try:
+    with driver.session() as session:
+      session.run(query, anime_id=anime_id)
+    return True
+  except Exception:
+    return False
 
 
 # --- Custom CSS ---
@@ -342,19 +366,28 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-# ตั้งรหัสผ่าน Admin ตามที่คุณต้องการ
-ADMIN_PASSWORD = "adminsecretpass"
-
 admin_pass = st.text_input(
     "🔑 กรอกรหัสผ่าน Admin เพื่อจัดการข้อมูล", type="password"
 )
 
-if admin_pass == ADMIN_PASSWORD:
+# ตรวจสอบรหัสผ่านตรงกับ Secrets หรือไม่ (เช่น 1234)
+if admin_pass == str(ADMIN_PASSWORD):
   st.success("🔓 เข้าสู่ระบบ Admin เรียบร้อยแล้ว")
 
-  tab_add, tab_delete = st.tabs(["➕ เพิ่ม Anime ใหม่", "🗑️ ลบ Anime"])
+  tab_list, tab_add, tab_delete = st.tabs(
+      ["📋 รายชื่อ Anime ในระบบ", "➕ เพิ่ม Anime ใหม่", "🗑️ ลบ Anime"]
+  )
 
-  # --- แท็บเพิ่ม Anime ---
+  # --- แท็บ 1: แสดงรายชื่ออนิเมะที่มี ---
+  with tab_list:
+    st.write("### 📋 อนิเมะทั้งหมดในฐานข้อมูล Neo4j")
+    anime_list = get_all_anime()
+    if anime_list:
+      st.dataframe(anime_list, use_container_width=True)
+    else:
+      st.info("ไม่พบข้อมูล หรือยังไม่มีการเชื่อมต่อกับ Neo4j")
+
+  # --- แท็บ 2: เพิ่ม Anime ---
   with tab_add:
     st.write("### ➕ เพิ่มข้อมูล Anime เข้าสู่ฐานข้อมูล Neo4j")
     with st.form("add_anime_form"):
@@ -368,27 +401,32 @@ if admin_pass == ADMIN_PASSWORD:
         if new_id and new_title:
           if add_anime(new_id, new_title, new_genre):
             st.success(f"เพิ่ม Anime '{new_title}' ({new_id}) เรียบร้อยแล้ว!")
+            st.rerun()
           else:
             st.error("ไม่สามารถเชื่อมต่อฐานข้อมูล Neo4j ได้")
         else:
           st.warning("กรุณากรอก ID และ ชื่อเรื่อง Anime ให้ครบถ้วน")
 
-  # --- แท็บลบ Anime ---
+  # --- แท็บ 3: ลบ Anime ---
   with tab_delete:
-    st.write("### 🗑️ ลบ Anime ออกจากฐานข้อมูล Neo4j")
-    anime_to_delete = st.text_input("กรอก Anime ID ที่ต้องการลบ (เช่น A004):")
+    st.write("### 🗑️️ ลบ Anime ออกจากฐานข้อมูล Neo4j")
+    anime_list = get_all_anime()
 
-    if st.button("🗑️ ยืนยันลบ Anime", type="primary"):
-      if anime_to_delete:
-        if delete_anime(anime_to_delete):
-          st.error(
-              f"ลบ Anime ID: {anime_to_delete}"
-              " และสายสัมพันธ์ทั้งหมดเรียบร้อยแล้ว"
-          )
+    if anime_list:
+      options = [
+          f"{item.get('id')} - {item.get('title')}" for item in anime_list
+      ]
+      selected_option = st.selectbox("เลือก Anime ที่ต้องการลบ:", options)
+
+      if st.button("🗑️ ยืนยันลบ Anime", type="primary"):
+        selected_id = selected_option.split(" - ")[0]
+        if delete_anime(selected_id):
+          st.success(f"ลบ Anime ID: {selected_id} เรียบร้อยแล้ว!")
+          st.rerun()
         else:
-          st.error("ไม่สามารถเชื่อมต่อฐานข้อมูล Neo4j ได้")
-      else:
-        st.warning("กรุณากรอก Anime ID ที่ต้องการลบ")
+          st.error("เกิดข้อผิดพลาดในการลบข้อมูล")
+    else:
+      st.info("ไม่มีรายการ Anime ให้ลบ")
 
 elif admin_pass != "":
   st.error("❌ รหัสผ่าน Admin ไม่ถูกต้อง")
