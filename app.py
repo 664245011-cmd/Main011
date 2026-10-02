@@ -131,10 +131,11 @@ html, body, [class*="css"] {
     box-shadow: 0 12px 28px rgba(229, 9, 20, 0.4);
 }
 
+/* ปรับปรุงการแสดงผลรูปโปสเตอร์การ์ดให้เต็มพื้นที่สมดุลกัน */
 .movie-poster {
     width: 100%;
-    height: 200px;
-    background-size: contain;
+    height: 180px;
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     position: relative;
@@ -259,6 +260,7 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
+# อัปเดตลิงก์รูปภาพให้เข้ากับธีมมืดและสไตล์เดียวกันทั้งหมด
 APPS = [
     (
         "🎌",
@@ -290,7 +292,7 @@ APPS = [
         "งานนำเสนอสไลด์โปรเจกต์ Anime Recommendation บน Canva",
         "https://canva.link/3u8r9s574edov6g",
         "เข้าชม Canva 🎬",
-        "https://logos-world.net/wp-content/uploads/2021/11/Canva-Logo.png",
+        "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600",
     ),
     (
         "⛅️",
@@ -298,15 +300,15 @@ APPS = [
         "แบบฝีกหัดสไลด์ บน Canva",
         "https://canva.link/n0t7yuf9venb98p",
         "เข้าชม Canva 🎬",
-        "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSYNPGIah1A98vztjRTsUrN9hhmD5wBxsFDlRgjVku-pSuQmj99",
+        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=600",
     ),
     (
         "⛅️",
         "github",
         "เข้าเว็บ github",
-        "https://github.0/664245011-cmd",
+        "https://github.com/664245011-cmd",
         "เข้าเว็บ github 🎬",
-        "https://upload.wikimedia.org/wikipedia/commons/c/c2/GitHub_Invertocat_Logo.svg",
+        "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?q=80&w=600",
     ),
 ]
 
