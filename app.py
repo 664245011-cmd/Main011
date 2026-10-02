@@ -240,7 +240,7 @@ APPS = [
         "ใช้งานระบบ →",
     ),
    (
-        "🎯",
+        "⛅️",
         "Canva ",
         "Canva",
         "https://canva.link/3u8r9s574edov6g",
