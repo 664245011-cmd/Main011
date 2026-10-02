@@ -149,7 +149,7 @@ footer, #MainMenu { visibility: hidden; }
 <div class="major-navbar">
     <div class="major-logo">
         <span style="font-size: 1.8rem;">🍿</span>
-        <span class="brand">MAJOR ANIME</span>
+        <span class="brand">ANIME</span>
     </div>
 </div>
 """,
@@ -164,19 +164,19 @@ st.markdown(
 # โหลดรูปภาพ
 photo_path = Path(__file__).resolve().parent.parent / "assets" / "1.jpg"
 try:
-  photo_b64 = base64.b64encode(photo_path.read_bytes()).decode()
-  st.markdown(
-      f'<div class="profile-photo-wrap"><img src="data:image/jpeg;base64,{photo_b64}" alt="Profile Photo"></div>',
-      unsafe_allow_html=True,
-  )
+    photo_b64 = base64.b64encode(photo_path.read_bytes()).decode()
+    st.markdown(
+        f'<div class="profile-photo-wrap"><img src="data:image/jpeg;base64,{photo_b64}" alt="Profile Photo"></div>',
+        unsafe_allow_html=True,
+    )
 except FileNotFoundError:
-  st.markdown(
-      '<div class="profile-photo-wrap"><div'
-      ' style="width:180px;height:180px;border-radius:50%;background:#141419;border:3px'
-      ' solid'
-      ' #D4AF37;display:flex;align-items:center;justify-content:center;font-size:4rem;">🧑‍💻</div></div>',
-      unsafe_allow_html=True,
-  )
+    st.markdown(
+        '<div class="profile-photo-wrap"><div'
+        ' style="width:180px;height:180px;border-radius:50%;background:#141419;border:3px'
+        ' solid'
+        ' #D4AF37;display:flex;align-items:center;justify-content:center;font-size:4rem;">🧑‍💻</div></div>',
+        unsafe_allow_html=True,
+    )
 
 st.markdown(
     """
