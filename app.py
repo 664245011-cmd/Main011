@@ -122,6 +122,7 @@ html, body, [class*="css"] {
     display: flex;
     flex-direction: column;
     box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+    margin-bottom: 20px;
 }
 
 .movie-card:hover {
@@ -297,7 +298,7 @@ APPS = [
         "แบบฝีกหัดสไลด์ บน Canva",
         "https://canva.link/n0t7yuf9venb98p",
         "เข้าชม Canva 🎬",
-        "blob:https://www.facebook.com/bf2191c8-0ec8-458a-aa93-9bd00a48037e",
+        "https://logos-world.net/wp-content/uploads/2021/11/Canva-Logo.png",
     ),
     (
         "⛅️",
@@ -305,13 +306,13 @@ APPS = [
         "เข้าเว็บ github",
         "https://github.com/664245011-cmd",
         "เข้าเว็บ github 🎬",
-        "https://upload.wikimedia.org/wikipedia/commons/c/c2/GitHub_Invertocat_Logo.svg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original",
+        "https://upload.wikimedia.org/wikipedia/commons/c/c2/GitHub_Invertocat_Logo.svg",
     ),
 ]
 
 cols = st.columns(4)
 for i, (icon, title, desc, url, btn_text, img_url) in enumerate(APPS):
-    with cols[i]:
+    with cols[i % 4]:
         st.markdown(
             f"""
             <div class="movie-card">
