@@ -15,22 +15,21 @@ st.markdown(
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;800&display=swap');
 
-/* Main App Layout - Anime Cyberpunk Theme */
+/* Main App Layout - Soft Sakura Theme */
 .stApp {
-    background-color: #050811;
+    background-color: #FFF5F7;
     background-image: 
-        radial-gradient(circle at 10% 20%, rgba(236, 72, 153, 0.12) 0%, transparent 30%),
-        radial-gradient(circle at 90% 80%, rgba(59, 130, 246, 0.15) 0%, transparent 35%),
-        radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.08) 0%, transparent 40%);
+        radial-gradient(circle at 10% 20%, rgba(255, 182, 193, 0.35) 0%, transparent 35%),
+        radial-gradient(circle at 90% 80%, rgba(165, 180, 252, 0.35) 0%, transparent 35%);
     background-attachment: fixed;
 }
 
 html, body, [class*="css"] { 
     font-family: 'Prompt', 'Outfit', sans-serif; 
-    color: #F1F5F9;
+    color: #334155;
 }
 
-/* Hero Section with Glowing Accent */
+/* Hero Section */
 .hero { 
     text-align: center; 
     padding: 40px 20px 10px 20px; 
@@ -39,21 +38,21 @@ html, body, [class*="css"] {
     font-family: 'Outfit', 'Prompt', sans-serif;
     font-size: 3.2rem;
     font-weight: 800;
-    background: linear-gradient(135deg, #FF758C 0%, #FF7EB3 50%, #7928CA 100%);
+    background: linear-gradient(135deg, #F43F5E 0%, #FB7185 50%, #6366F1 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 6px;
-    filter: drop-shadow(0 0 25px rgba(255, 117, 140, 0.3));
+    filter: drop-shadow(0 4px 15px rgba(244, 63, 94, 0.15));
 }
 .hero p { 
-    color: #94A3B8; 
+    color: #64748B; 
     font-size: 1.15rem; 
     letter-spacing: 0.5px; 
     margin-top: 0; 
-    font-weight: 300;
+    font-weight: 400;
 }
 
-/* Profile Photo Wrap with Anime Ring */
+/* Profile Photo Wrap */
 .profile-photo-wrap {
     display: flex;
     justify-content: center;
@@ -65,40 +64,40 @@ html, body, [class*="css"] {
     border-radius: 50%;
     border: 4px solid transparent;
     background:
-        linear-gradient(#0F172A, #0F172A) padding-box,
-        linear-gradient(135deg, #FF758C, #8B5CF6, #3B82F6) border-box;
-    box-shadow: 0 0 35px rgba(139, 92, 246, 0.4), inset 0 0 15px rgba(255, 117, 140, 0.3);
+        linear-gradient(#FFFFFF, #FFFFFF) padding-box,
+        linear-gradient(135deg, #F43F5E, #818CF8) border-box;
+    box-shadow: 0 10px 30px rgba(244, 63, 94, 0.2);
     object-fit: cover;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 .profile-photo-wrap img:hover {
     transform: scale(1.05) rotate(2deg);
-    box-shadow: 0 0 50px rgba(255, 117, 140, 0.6), inset 0 0 20px rgba(59, 130, 246, 0.5);
+    box-shadow: 0 15px 40px rgba(244, 63, 94, 0.35);
 }
 
 /* Glassmorphism Profile Card */
 .profile-card {
     max-width: 480px;
     margin: 30px auto 0 auto;
-    background: rgba(15, 23, 42, 0.75);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(255, 182, 193, 0.4);
     border-radius: 24px;
     padding: 35px 40px;
     text-align: center;
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5), 0 0 20px rgba(139, 92, 246, 0.1);
+    box-shadow: 0 15px 30px -10px rgba(225, 29, 72, 0.1);
     position: relative;
     overflow: hidden;
 }
 .profile-card::before {
     content: '';
     position: absolute;
-    top: 0; left: 0; right: 0; height: 3px;
-    background: linear-gradient(90deg, #FF758C, #8B5CF6, #3B82F6);
+    top: 0; left: 0; right: 0; height: 4px;
+    background: linear-gradient(90deg, #F43F5E, #818CF8);
 }
 .profile-card h2 {
-    color: #FFFFFF;
+    color: #1E293B;
     font-family: 'Outfit', 'Prompt', sans-serif;
     font-size: 1.65rem;
     font-weight: 700;
@@ -110,25 +109,25 @@ html, body, [class*="css"] {
     justify-content: space-between;
     align-items: center;
     padding: 15px 8px;
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
-    color: #CBD5E1;
+    border-top: 1px solid rgba(225, 29, 72, 0.08);
+    color: #475569;
     font-size: 1.05rem;
 }
 .info-row:first-of-type { border-top: none; }
 .info-row span.label { 
-    color: #94A3B8; 
-    font-weight: 400; 
+    color: #64748B; 
+    font-weight: 500; 
     display: flex;
     align-items: center;
     gap: 8px;
 }
 .info-row span.value { 
     font-weight: 600; 
-    color: #F472B6; 
-    background: rgba(244, 114, 182, 0.1);
+    color: #E11D48; 
+    background: rgba(244, 63, 94, 0.08);
     padding: 4px 12px;
     border-radius: 8px;
-    border: 1px solid rgba(244, 114, 182, 0.2);
+    border: 1px solid rgba(244, 63, 94, 0.18);
     letter-spacing: 0.5px; 
 }
 
@@ -138,8 +137,8 @@ footer, #MainMenu { visibility: hidden; }
 
 /* Sidebar Styling */
 [data-testid="stSidebar"] {
-    background: #090D16 !important;
-    border-right: 1px solid rgba(255, 255, 255, 0.05) !important;
+    background: #FFF0F3 !important;
+    border-right: 1px solid rgba(255, 182, 193, 0.3) !important;
 }
 [data-testid="stSidebarNav"] { padding-top: 20px; }
 [data-testid="stSidebarNav"]::before {
@@ -147,18 +146,18 @@ footer, #MainMenu { visibility: hidden; }
     display: block;
     margin: 0 20px 20px 20px;
     padding-bottom: 16px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(225, 29, 72, 0.1);
     font-family: 'Outfit', sans-serif;
     font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 2px;
-    color: #64748B;
+    color: #94A3B8;
 }
 [data-testid="stSidebarNav"] a {
     margin: 4px 12px !important;
     padding: 12px 16px !important;
     border-radius: 12px;
-    color: #94A3B8 !important;
+    color: #64748B !important;
     font-family: 'Prompt', sans-serif;
     font-weight: 500;
     font-size: 0.95rem;
@@ -166,13 +165,13 @@ footer, #MainMenu { visibility: hidden; }
     background: transparent !important;
 }
 [data-testid="stSidebarNav"] a:hover {
-    background: rgba(255, 117, 140, 0.1) !important;
-    color: #FF758C !important;
+    background: rgba(244, 63, 94, 0.08) !important;
+    color: #E11D48 !important;
 }
 [data-testid="stSidebarNav"] a[aria-current="page"] {
-    background: linear-gradient(90deg, rgba(255, 117, 140, 0.15) 0%, transparent 100%) !important;
-    color: #FF758C !important;
-    border-left: 3px solid #FF758C;
+    background: linear-gradient(90deg, rgba(244, 63, 94, 0.12) 0%, transparent 100%) !important;
+    color: #E11D48 !important;
+    border-left: 3px solid #E11D48;
     font-weight: 600;
 }
 
@@ -185,11 +184,11 @@ footer, #MainMenu { visibility: hidden; }
 /* Footer */
 .custom-footer {
     text-align: center;
-    color: #64748B;
+    color: #94A3B8;
     margin-top: 60px;
     padding: 30px 20px;
     font-size: 0.85rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: 1px solid rgba(225, 29, 72, 0.1);
 }
 </style>
 """,
@@ -217,9 +216,9 @@ try:
 except FileNotFoundError:
   st.markdown(
       '<div class="profile-photo-wrap"><div'
-      ' style="width:190px;height:190px;border-radius:50%;background:#0F172A;border:4px'
+      ' style="width:190px;height:190px;border-radius:50%;background:#FFF0F3;border:4px'
       ' solid'
-      ' #FF758C;display:flex;align-items:center;justify-content:center;font-size:4rem;">🧑‍💻</div></div>',
+      ' #F43F5E;display:flex;align-items:center;justify-content:center;font-size:4rem;">🧑‍💻</div></div>',
       unsafe_allow_html=True,
   )
 
