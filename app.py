@@ -65,12 +65,12 @@ html, body, [class*="css"] {
     color: #E50914;
 }
 
-/* Banner Featured Hero Section */
+/* Banner Featured Hero Section with Anime Wallpaper Background */
 .hero-banner {
     width: 100%;
-    height: 220px;
-    background: linear-gradient(90deg, rgba(229, 9, 20, 0.8) 0%, rgba(10, 10, 15, 0.95) 60%), 
-                url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=1200') center/cover;
+    height: 230px;
+    background: linear-gradient(90deg, rgba(5, 5, 7, 0.95) 0%, rgba(229, 9, 20, 0.65) 50%, rgba(5, 5, 7, 0.95) 100%), 
+                url('https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=1200') center/cover;
     border-radius: 12px;
     padding: 35px 40px;
     display: flex;
@@ -78,7 +78,7 @@ html, body, [class*="css"] {
     justify-content: center;
     box-shadow: 0 10px 30px rgba(0,0,0,0.8);
     margin-bottom: 25px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(212, 175, 55, 0.3);
 }
 
 .hero-banner h1 {
@@ -111,7 +111,7 @@ html, body, [class*="css"] {
     letter-spacing: 0.5px;
 }
 
-/* Poster Card (เหมือนหน้าตั๋วหนังในรูป) */
+/* Poster Card */
 .movie-card {
     background: #141419;
     border-radius: 12px;
@@ -237,9 +237,8 @@ footer, #MainMenu { visibility: hidden; }
     </div>
     <div class="major-nav-links">
         <span>หน้าแรก</span>
-        <span>ภาพยนตร์</span>
         <span>ระบบแนะนำ</span>
-        <span>เกี่ยวกับผู้จัดทำ</span>
+        <span>ผู้พัฒนา</span>
     </div>
 </div>
 
@@ -253,12 +252,16 @@ footer, #MainMenu { visibility: hidden; }
     unsafe_allow_html=True,
 )
 
-# แถบหัวข้อสีแดงสไตล์ Major Cineplex
 st.markdown(
     '<div class="section-header-red">🎬 ระบบและเครื่องมือแนะนำทั้งหมด</div>',
     unsafe_allow_html=True,
 )
 
+# ปรับเปลี่ยนรูปภาพหน้าปกแยกตามเนื้อหาตรงๆ:
+# 1. โครงสร้างข้อมูล Anime & User -> รูป Graph / Data Nodes
+# 2. วิเคราะห์ความสัมพันธ์ User -> รูป Anime Community / Social Network
+# 3. ระบบแนะนำ Anime -> รูป Anime Recommendation / Film Wall
+# 4. Canva -> รูป Design / Presentation Artwork
 APPS = [
     (
         "🎌",
@@ -266,7 +269,7 @@ APPS = [
         "จัดการข้อมูล User และ Anime ด้วยฐานข้อมูลกราฟ Neo4j",
         "https://colab.research.google.com/drive/1KMFRz3LPGn4fD5jBG-ZwCuxoh_yIozvE?usp=sharing",
         "เปิดใน Colab 🎟️",
-        "https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=600",
+        "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=600",
     ),
     (
         "👥",
@@ -274,7 +277,7 @@ APPS = [
         "วิเคราะห์ความสัมพันธ์ FRIEND_OF และประวัติการดู Anime",
         "https://colab.research.google.com/drive/1UYPIwMs_xU9LFInJJ1FPOMk_e7nA3_Pt?usp=sharing",
         "เปิดใน Colab 🎟️",
-        "https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=600",
+        "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=600",
     ),
     (
         "🎯",
@@ -282,19 +285,18 @@ APPS = [
         "แนะนำ Anime จากความสัมพันธ์และ Anime ที่เพื่อนเคยดู",
         "https://9suvavqbzjuffsung5rryh.streamlit.app/",
         "ซื้อตั๋ว / เข้าใช้งาน 🍿",
-        "https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=600",
+        "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=600",
     ),
     (
         "⛅️",
         "Canva Presentation",
-        "งานนำเสนอสไลด์โปรเจค Anime Recommendation บน Canva",
+        "งานนำเสนอสไลด์โปรเจกต์ Anime Recommendation บน Canva",
         "https://canva.link/3u8r9s574edov6g",
         "เข้าชม Canva 🎬",
-        "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=600",
+        "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600",
     ),
 ]
 
-# แสดงผลการ์ดสไตล์โปสเตอร์หนังเหมือนภาพตัวอย่าง
 cols = st.columns(4)
 for i, (icon, title, desc, url, btn_text, img_url) in enumerate(APPS):
   with cols[i]:
@@ -321,7 +323,7 @@ for i, (icon, title, desc, url, btn_text, img_url) in enumerate(APPS):
 st.markdown(
     """
     <div class="custom-footer">
-        Major Anime Recommendation &bull; Powered by Streamlit & Neo4j &copy; 2026
+        Major Anime Recommendation System &bull; Powered by Streamlit & Neo4j &copy; 2026
     </div>
     """,
     unsafe_allow_html=True,
