@@ -291,6 +291,22 @@ APPS = [
         "เข้าชม Canva 🎬",
         "https://logos-world.net/wp-content/uploads/2021/11/Canva-Logo.png",
     ),
+    (
+        "⛅️",
+        "แบบฝีกหัด",
+        "แบบฝีกหัดสไลด์ บน Canva",
+        "https://canva.link/n0t7yuf9venb98p",
+        "เข้าชม Canva 🎬",
+        "blob:https://www.facebook.com/bf2191c8-0ec8-458a-aa93-9bd00a48037e",
+    ),
+    (
+        "⛅️",
+        "Canva Presentation",
+        "งานนำเสนอสไลด์โปรเจกต์ Anime Recommendation บน Canva",
+        "https://canva.link/3u8r9s574edov6g",
+        "เข้าชม Canva 🎬",
+        "https://logos-world.net/wp-content/uploads/2021/11/Canva-Logo.png",
+    ),
 ]
 
 cols = st.columns(4)
