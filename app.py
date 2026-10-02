@@ -133,7 +133,8 @@ html, body, [class*="css"] {
 .movie-poster {
     width: 100%;
     height: 200px;
-    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
     background-position: center;
     position: relative;
     background-color: #1F1F28;
@@ -257,11 +258,6 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-# ปรับเปลี่ยนรูปภาพหน้าปกแยกตามเนื้อหาตรงๆ:
-# 1. โครงสร้างข้อมูล Anime & User -> รูป Graph / Data Nodes
-# 2. วิเคราะห์ความสัมพันธ์ User -> รูป Anime Community / Social Network
-# 3. ระบบแนะนำ Anime -> รูป Anime Recommendation / Film Wall
-# 4. Canva -> รูป Design / Presentation Artwork
 APPS = [
     (
         "🎌",
@@ -269,7 +265,7 @@ APPS = [
         "จัดการข้อมูล User และ Anime ด้วยฐานข้อมูลกราฟ Neo4j",
         "https://colab.research.google.com/drive/1KMFRz3LPGn4fD5jBG-ZwCuxoh_yIozvE?usp=sharing",
         "เปิดใน Colab 🎟️",
-        "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=600",
+        "https://upload.wikimedia.org/wikipedia/commons/d/d0/Google_Colaboratory_SVG_Logo.svg",
     ),
     (
         "👥",
@@ -277,7 +273,7 @@ APPS = [
         "วิเคราะห์ความสัมพันธ์ FRIEND_OF และประวัติการดู Anime",
         "https://colab.research.google.com/drive/1UYPIwMs_xU9LFInJJ1FPOMk_e7nA3_Pt?usp=sharing",
         "เปิดใน Colab 🎟️",
-        "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=600",
+        "https://upload.wikimedia.org/wikipedia/commons/d/d0/Google_Colaboratory_SVG_Logo.svg",
     ),
     (
         "🎯",
@@ -293,32 +289,32 @@ APPS = [
         "งานนำเสนอสไลด์โปรเจกต์ Anime Recommendation บน Canva",
         "https://canva.link/3u8r9s574edov6g",
         "เข้าชม Canva 🎬",
-        "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600",
+        "https://upload.wikimedia.org/wikipedia/commons/0/08/Canva_icon_2021.svg",
     ),
 ]
 
 cols = st.columns(4)
 for i, (icon, title, desc, url, btn_text, img_url) in enumerate(APPS):
-  with cols[i]:
-    st.markdown(
-        f"""
-        <div class="movie-card">
-            <div class="movie-poster" style="background-image: url('{img_url}');">
-                <div class="poster-overlay">
-                    <span class="poster-badge">{icon} FEATURE</span>
+    with cols[i]:
+        st.markdown(
+            f"""
+            <div class="movie-card">
+                <div class="movie-poster" style="background-image: url('{img_url}');">
+                    <div class="poster-overlay">
+                        <span class="poster-badge">{icon} FEATURE</span>
+                    </div>
+                </div>
+                <div class="movie-body">
+                    <div>
+                        <h3>{title}</h3>
+                        <p>{desc}</p>
+                    </div>
+                    <a class="btn-book" href="{url}" target="_blank">{btn_text}</a>
                 </div>
             </div>
-            <div class="movie-body">
-                <div>
-                    <h3>{title}</h3>
-                    <p>{desc}</p>
-                </div>
-                <a class="btn-book" href="{url}" target="_blank">{btn_text}</a>
-            </div>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
+            """,
+            unsafe_allow_html=True,
+        )
 
 st.markdown(
     """
