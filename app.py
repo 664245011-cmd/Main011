@@ -282,7 +282,7 @@ APPS = [
         "แนะนำ Anime จากความสัมพันธ์และ Anime ที่เพื่อนเคยดู",
         "https://9suvavqbzjuffsung5rryh.streamlit.app/",
         "เปิดใน streamlit 🎟️",
-        "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=600",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDyBXS1JbKttxnxaeSKQkdqdZkZRPf2qYA1goKOn_iug&s=10",
     ),
     (
         "⛅️️",
