@@ -49,27 +49,11 @@ html, body, [class*="css"] {
     letter-spacing: 2px;
 }
 
-.major-nav-links {
-    display: flex;
-    gap: 20px;
-    font-size: 0.85rem;
-    color: #A1A1AA;
-}
-
-.major-nav-links span {
-    cursor: pointer;
-    transition: color 0.2s;
-}
-
-.major-nav-links span:hover {
-    color: #E50914;
-}
-
 /* Banner Featured Hero Section with Anime Wallpaper Background */
 .hero-banner {
     width: 100%;
     height: 230px;
-    background: linear-gradient(90deg, rgba(5, 5, 7, 0.95) 0%, rgba(229, 9, 20, 0.65) 50%, rgba(5, 5, 7, 0.95) 100%), 
+    background: linear-gradient(90deg, rgba(5, 5, 7, 0.95) 0%, rgba(229, 9, 20, 0.65) 50%, rgba(5, 5, 7, 0.95) 100%),
                 url('https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=1200') center/cover;
     border-radius: 12px;
     padding: 35px 40px;
@@ -236,11 +220,6 @@ footer, #MainMenu { visibility: hidden; }
     <div class="major-logo">
         <span style="font-size: 1.8rem;">🍿</span>
         <span class="brand">ANIME</span>
-    </div>
-    <div class="major-nav-links">
-        <span>หน้าแรก</span>
-        <span>ระบบแนะนำ</span>
-        <span>ผู้พัฒนา</span>
     </div>
 </div>
 
