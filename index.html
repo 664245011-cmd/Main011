@@ -41,12 +41,28 @@ body{min-height:100vh;background-color:#0B0B0E;background-image:linear-gradient(
 .info-row{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-top:1px dashed rgba(255,255,255,.1);color:#E4E4E7;font-size:1.05rem}
 .info-row .label{color:#A1A1AA}
 .info-row .value{font-weight:700;color:#D4AF37;background:rgba(229,9,20,.25);padding:4px 14px;border-radius:6px;border:1px solid rgba(229,9,20,.5)}
+.layout{display:flex;min-height:100vh}
+.sidebar{width:260px;flex-shrink:0;background:#09090C;border-right:1px solid rgba(255,255,255,.08);padding:70px 16px 20px;position:sticky;top:0;height:100vh}
+.sidebar nav{display:flex;flex-direction:column;gap:4px}
+.sidebar a{display:block;padding:8px 12px;border-radius:8px;color:#E4E4E7;text-decoration:none;font-size:.95rem;border-left:3px solid transparent;transition:background .15s}
+.sidebar a:hover{background:rgba(255,255,255,.06)}
+.sidebar a.active{background:rgba(229,9,20,.2);color:#D4AF37;border-left-color:#E50914;font-weight:600}
+.content{flex:1;min-width:0}
 .page{display:none}.page.active{display:block}
 @media(max-width:1000px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:800px){.layout{flex-direction:column}.sidebar{width:100%;height:auto;position:static;padding:10px 16px;border-right:0;border-bottom:1px solid rgba(255,255,255,.08)}.sidebar nav{flex-direction:row}}
 @media(max-width:560px){.grid{grid-template-columns:1fr}.hero-banner{padding:25px 22px}.hero-banner h1{font-size:1.6rem}.profile-card{padding:25px 20px}}
 </style>
 </head>
 <body>
+<div class="layout">
+<aside class="sidebar">
+  <nav>
+    <a href="#home" data-page="home">app</a>
+    <a href="#about" data-page="about">about</a>
+  </nav>
+</aside>
+<div class="content">
 <div class="major-navbar">
   <a class="major-logo" href="#home"><span style="font-size:1.8rem">🍿</span><span class="brand">ANIME</span></a>
 </div>
@@ -118,7 +134,6 @@ body{min-height:100vh;background-color:#0B0B0E;background-image:linear-gradient(
     </div>
     <div class="custom-footer">
       Major Anime Recommendation System &bull; Powered by Streamlit &amp; Neo4j &copy; 2026
-      <br><a href="#about">🧑‍💻 ผู้พัฒนา</a>
     </div>
   </section>
 
@@ -133,15 +148,17 @@ body{min-height:100vh;background-color:#0B0B0E;background-image:linear-gradient(
     </div>
     <div class="custom-footer">
       Major Anime Recommendation System &bull; Powered by Streamlit &copy; 2026
-      <br><a href="#home">← กลับหน้าแรก</a>
     </div>
   </section>
 </main>
+</div>
+</div>
 
 <script>
 function route(){
   var id = location.hash === '#about' ? 'about' : 'home';
   document.querySelectorAll('.page').forEach(function(p){p.classList.toggle('active', p.id === id)});
+  document.querySelectorAll('.sidebar a').forEach(function(a){a.classList.toggle('active', a.dataset.page === id)});
   document.title = id === 'about' ? 'ผู้พัฒนา | Major Cineplex Anime' : 'Major Cineplex | Anime Recommendation Hub';
   window.scrollTo(0,0);
 }
