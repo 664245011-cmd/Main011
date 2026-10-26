@@ -28,7 +28,7 @@ html, body, [class*="css"] {
 .major-navbar {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: space-between;
     padding: 12px 30px;
     background: #000000;
     border-bottom: 2px solid #E50914;
@@ -47,6 +47,22 @@ html, body, [class*="css"] {
     font-size: 1.6rem;
     color: #D4AF37;
     letter-spacing: 2px;
+}
+
+.major-nav-links {
+    display: flex;
+    gap: 20px;
+    font-size: 0.85rem;
+    color: #A1A1AA;
+}
+
+.major-nav-links span {
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.major-nav-links span:hover {
+    color: #E50914;
 }
 
 /* Banner Featured Hero Section with Anime Wallpaper Background */
@@ -94,3 +110,418 @@ html, body, [class*="css"] {
     gap: 10px;
     letter-spacing: 0.5px;
 }
+
+/* Poster Card */
+.movie-card {
+    background: #141419;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+    margin-bottom: 20px;
+}
+
+.movie-card:hover {
+    transform: translateY(-8px);
+    border-color: #E50914;
+    box-shadow: 0 12px 28px rgba(229, 9, 20, 0.4);
+}
+
+.movie-poster {
+    width: 100%;
+    height: 200px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    background-color: #1F1F28;
+    display: flex;
+    align-items: flex-end;
+}
+
+.poster-overlay {
+    width: 100%;
+    padding: 10px;
+    background: linear-gradient(0deg, #141419 0%, transparent 100%);
+}
+
+.poster-badge {
+    display: inline-block;
+    padding: 3px 8px;
+    background: #E50914;
+    color: #FFFFFF;
+    font-size: 0.7rem;
+    font-weight: 700;
+    border-radius: 4px;
+    margin-bottom: 5px;
+}
+
+.movie-body {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+}
+
+.movie-body h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin: 0 0 8px 0;
+    line-height: 1.4;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.movie-body p {
+    font-size: 0.82rem;
+    color: #A1A1AA;
+    line-height: 1.5;
+    margin: 0 0 15px 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Major Booking Button Style */
+.btn-book {
+    display: block;
+    width: 100%;
+    padding: 10px 0;
+    text-align: center;
+    background: linear-gradient(135deg, #E50914 0%, #B81D24 100%);
+    color: #FFFFFF !important;
+    font-weight: 700;
+    font-size: 0.88rem;
+    border-radius: 6px;
+    text-decoration: none !important;
+    transition: all 0.2s ease;
+    border: 1px solid #FF3B30;
+    box-shadow: 0 4px 12px rgba(229, 9, 20, 0.3);
+}
+
+.btn-book:hover {
+    background: #FF1E27;
+    box-shadow: 0 6px 18px rgba(229, 9, 20, 0.6);
+    color: #FFF275 !important;
+}
+
+/* Footer */
+.custom-footer {
+    text-align: center;
+    color: #71717A;
+    margin-top: 50px;
+    padding: 25px 20px;
+    font-size: 0.85rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+footer, #MainMenu { visibility: hidden; }
+
+[data-testid="stSidebar"] {
+    background: #09090C !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+</style>
+
+<!-- Major Top Bar Header -->
+<div class="major-navbar">
+    <div class="major-logo">
+        <span style="font-size: 1.8rem;">🍿</span>
+        <span class="brand">ANIME</span>
+    </div>
+    <div class="major-nav-links">
+        <span>หน้าแรก</span>
+        <span>ระบบแนะนำ</span>
+        <span>ผู้พัฒนา</span>
+    </div>
+</div>
+
+<!-- Major Feature Banner -->
+<div class="hero-banner">
+    <span class="poster-badge" style="width: fit-content; margin-bottom: 8px;">RECOMMENDED SYSTEM</span>
+    <h1>ANIME RECOMMENDATION HUB</h1>
+    <p>ระบบแนะนำอนิเมะอัจฉริยะ ประมวลผลจากฐานข้อมูลกราฟความสัมพันธ์ (Neo4j)</p>
+</div>
+""",
+    unsafe_allow_html=True,
+)
+
+st.markdown(
+    '<div class="section-header-red">🎬 ระบบและเครื่องมือแนะนำทั้งหมด</div>',
+    unsafe_allow_html=True,
+)
+
+APPS = [
+    (
+        "🎌",
+        "โครงสร้างข้อมูล Anime & User",
+        "จัดการข้อมูล User และ Anime ด้วยฐานข้อมูลกราฟ Neo4j",
+        "https://colab.research.google.com/drive/1KMFRz3LPGn4fD5jBG-ZwCuxoh_yIozvE?usp=sharing",
+        "เปิดใน Colab 🎟️",
+        "https://upload.wikimedia.org/wikipedia/commons/d/d0/Google_Colaboratory_SVG_Logo.svg",
+    ),
+    (
+        "👥",
+        "วิเคราะห์ความสัมพันธ์ User",
+        "วิเคราะห์ความสัมพันธ์ FRIEND_OF และประวัติการดู Anime",
+        "https://colab.research.google.com/drive/1UYPIwMs_xU9LFInJJ1FPOMk_e7nA3_Pt?usp=sharing",
+        "เปิดใน Colab 🎟️",
+        "https://upload.wikimedia.org/wikipedia/commons/d/d0/Google_Colaboratory_SVG_Logo.svg",
+    ),
+    (
+        "🎯",
+        "ระบบแนะนำ Anime",
+        "แนะนำ Anime จากความสัมพันธ์และ Anime ที่เพื่อนเคยดู",
+        "https://9suvavqbzjuffsung5rryh.streamlit.app/",
+        "เปิดใน streamlit 🎟️",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDyBXS1JbKttxnxaeSKQkdqdZkZRPf2qYA1goKOn_iug&s=10",
+    ),
+    (
+        "⛅️️",
+        "Canva Presentation",
+        "งานนำเสนอสไลด์โปรเจกต์ Anime Recommendation บน Canva",
+        "https://canva.link/3u8r9s574edov6g",
+        "เข้าชม Canva 🎬",
+        "https://logos-world.net/wp-content/uploads/2021/11/Canva-Logo.png",
+    ),
+    (
+        "⛅️",
+        "แบบฝีกหัด",
+        "แบบฝีกหัดสไลด์ บน Canva",
+        "https://canva.link/n0t7yuf9venb98p",
+        "เข้าชม Canva 🎬",
+        "https://cdn-icons-png.flaticon.com/512/2991/2991108.png",
+    ),
+    (
+        "⛅️",
+        "github",
+        "เข้าเว็บ github",
+        "https://github.com/664245011-cmd",
+        "เข้าเว็บ github 🎬",
+        "https://upload.wikimedia.org/wikipedia/commons/c/c2/GitHub_Invertocat_Logo.svg",
+    ),
+]
+
+cols = st.columns(4)
+for i, (icon, title, desc, url, btn_text, img_url) in enumerate(APPS):
+    with cols[i % 4]:
+        st.markdown(
+            f"""
+            <div class="movie-card">
+                <div class="movie-poster" style="background-image: url('{img_url}');">
+                    <div class="poster-overlay">
+                        <span class="poster-badge">{icon} FEATURE</span>
+                    </div>
+                </div>
+                <div class="movie-body">
+                    <div>
+                        <h3>{title}</h3>
+                        <p>{desc}</p>
+                    </div>
+                    <a class="btn-book" href="{url}" target="_blank">{btn_text}</a>
+                </div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+
+st.markdown(
+    """
+    <div class="custom-footer">
+        Major Anime Recommendation System &bull; Powered by Streamlit & Neo4j &copy; 2026
+    </div>
+    """,
+    unsafe_allow_html=True,
+)
+
+ได้เลย ให้เอาเมนู หน้าแรก / ระบบแนะนำ / ผู้พัฒนา ออกจากแถบด้านบน เหลือแค่โลโก้ 🍿 ANIME และคงการ์ดเครื่องมือทั้งหมดไว้เหมือนเดิม
+
+ในโค้ด app.py ให้แก้ 2 จุดนี้
+
+จุดที่ 1: ลบเมนูด้านบนออก
+
+หาโค้ดส่วนนี้ใน st.markdown() แล้วลบเฉพาะส่วน major-nav-links ออก
+
+
+<!-- Major Top Bar Header -->
+<div class="major-navbar">
+    <div class="major-logo">
+        <span style="font-size: 1.8rem;">🍿</span>
+        <span class="brand">ANIME</span>
+    </div>
+</div>
+
+จุดที่ 2: ปรับโลโก้ให้อยู่ซ้ายเหมือนเดิม
+
+โค้ด CSS ของ .major-navbar ใช้แบบนี้ได้เลย
+
+
+.major-navbar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 12px 30px;
+    background: #000000;
+    border-bottom: 2px solid #E50914;
+    margin: -60px -50px 20px -50px;
+}
+
+วิธีบันทึกและดูผล
+
+กด Ctrl + S เพื่อบันทึก app.py
+
+หากใช้ Streamlit ในเครื่อง ให้รีเฟรชหน้าเว็บ หรือกด Rerun
+
+ถ้าเปิดผ่าน Streamlit Cloud ให้ Push โค้ดที่แก้แล้วขึ้น GitHub
+
+ผลลัพธ์คือแถบด้านบนจะเหลือเฉพาะ 🍿 ANIME ไม่มีเมนูหน้าแรก ระบบแนะนำ และผู้พัฒนา ส่วนแบนเนอร์และการ์ดทั้ง 6 รายการยังอยู่ครบครับ
+
+เอาไฟลมา
+
+ดาวน์โหลดไฟล์ app.py ที่แก้ไขแล้วได้เลยครับ
+
+app.py
+
+ไฟล์ Python สำหรับ Streamlit · UTF-8
+
+แก้เมนูด้านบนแล้ว
+
+⬇️ ดาวน์โหลดไฟล์ app.py
+
+สิ่งที่แก้ไขให้แล้ว:
+
+ลบเมนู หน้าแรก / ระบบแนะนำ / ผู้พัฒนา
+
+เหลือโลโก้ 🍿 ANIME ทางซ้าย
+
+คงธีมสีดำแดง แบนเนอร์ และการ์ดเครื่องมือทั้ง 6 รายการ
+
+คงลิงก์ Colab, Streamlit, Canva และ GitHub ไว้
+
+วิธีใช้: นำไฟล์นี้ไปแทน app.py เดิมในโปรเจกต์ แล้วรีเฟรชหน้าเว็บได้เลยครับ
+
+
+app.py
+โค้ด
+File "/mount/src/main011/app.py", line 4
+      box-shadow: 0 6px 18px rgba(229, 9, 20, 0.6);
+                    ^
+SyntaxError: invalid decimal literal
+
+ประมวลผล 12s
+Error นี้เกิดจากโค้ด CSS เช่น box-shadow ถูก Python อ่านเป็นโค้ด Python ครับ ต้องใส่ CSS ไว้ภายใน st.markdown(""" ... """, unsafe_allow_html=True)
+
+ผมทำไฟล์ app.py ฉบับเต็มให้ใหม่ โดยคงหน้า Anime Recommendation Hub และลบเมนูด้านบนออกแล้ว
+
+app.py — ไฟล์แก้ไขแล้ว
+
+Python + Streamlit พร้อมโค้ด CSS ภายในสตริง
+
+ดาวน์โหลด app.py
+
+วิธีแก้บน Streamlit Cloud
+ดาวน์โหลดไฟล์ด้านบน
+
+เปิด GitHub repository main011
+
+เปิดไฟล์ app.py แล้วเลือกแก้ไข
+
+ลบโค้ดเดิมทั้งหมด แล้วนำโค้ดจากไฟล์ใหม่ไปใส่แทน ห้ามนำไปต่อท้ายโค้ดเก่า
+
+กด Commit changes แล้วรอ Streamlit Cloud รีบิวด์
+
+หากยังขึ้น Error เดิม ให้ตรวจสอบว่าไฟล์ app.py บรรทัดแรกเป็น import streamlit as st ไม่ใช่โค้ด CSS ครับ
+
+
+app.py
+โค้ด
+File "/mount/src/main011/app.py", line 11
+      """
+      ^
+SyntaxError: unterminated triple-quoted string literal (detected at line 96)
+
+ประมวลผล 22s
+ข้อผิดพลาดนี้เกิดจากเครื่องหมาย """ ที่ใช้เปิดและปิดข้อความ CSS ไม่ครบ ทำให้ Python เข้าใจว่าโค้ดยังอยู่ในข้อความเดิมครับ
+
+ผมตรวจสอบไฟล์ app.py ฉบับแก้ไขแล้ว และทดสอบไวยากรณ์ Python ผ่านเรียบร้อย โดยคงหน้า Anime Recommendation Hub และลบเมนูด้านบนออกตามที่ต้องการ
+
+⬇️ ดาวน์โหลดไฟล์ app.py ฉบับแก้ไขล่าสุด
+
+วิธีแก้ให้หายขาด
+
+ดาวน์โหลดไฟล์ใหม่จากลิงก์ด้านบน
+
+เปิด GitHub Repository main011
+
+เปิด app.py แล้วแทนที่โค้ดเดิมทั้งหมดด้วยไฟล์ใหม่
+
+กด Commit changes แล้วรอ Streamlit Cloud รีสตาร์ต
+
+สำคัญ: อย่านำโค้ดใหม่ไปต่อท้ายโค้ดเดิม เพราะอาจทำให้เกิด SyntaxError ซ้ำอีกครับ
+
+
+app.py
+โค้ด
+
+ข้อความที่วาง (1)(6).txt
+เอกสาร
+แก้จากโค้ดนี้ดิลบมันออก
+
+ประมวลผล 19s
+
+
+
+ผมแก้จากโค้ดในไฟล์ที่ส่งมาจริง ๆ แล้วครับ โดยตัดข้อความที่ไม่ใช่โค้ด Python ซึ่งต่อท้ายไฟล์ออก และลบเมนูด้านบนทั้ง 3 รายการออก โดยไม่เปลี่ยนลิงก์เครื่องมือเดิม
+
+app.py — ฉบับแก้จากโค้ดเดิม
+
+ตรวจสอบไวยากรณ์ Python ผ่านแล้ว
+
+แก้แล้ว
+⬇️ ดาวน์โหลดไฟล์ app.py
+
+วิธีใช้: นำไฟล์นี้ไปแทน app.py เดิมใน GitHub Repository main011 แล้วกด Commit changes เพื่อให้ Streamlit Cloud อัปเดตหน้าเว็บ
+
+ไฟล์นี้ยังคงแบนเนอร์ ธีมสีดำแดง การ์ดเครื่องมือ 6 รายการ และลิงก์เดิมไว้ครับ
+
+
+app.py
+โค้ด
+File "/mount/src/main011/app.py", line 11
+      """
+      ^
+SyntaxError: unterminated triple-quoted string literal (detected at line 96)
+
+ประมวลผล 16s
+ไฟล์ที่แก้ถูกต้องแล้ว แต่ต้องแทนที่ไฟล์บน GitHub ให้หมดทั้งไฟล์ ไม่ใช่เพิ่มโค้ดต่อท้ายครับ
+
+ดาวน์โหลด app.py ที่แก้ SyntaxError แล้ว
+
+ทำตามนี้:
+
+เปิด GitHub แล้วเข้า Repository main011
+
+เปิด app.py แล้วกด Edit
+
+กด Ctrl + A ในช่องโค้ด แล้วลบโค้ดเดิมทั้งหมด
+
+เปิดไฟล์ที่ดาวน์โหลด คัดลอกโค้ดทั้งหมดไปวาง
+
+กด Commit changes แล้วรอ Streamlit Cloud รีบิวด์
+
+ผมตรวจสอบไฟล์นี้แล้วว่าไวยากรณ์ Python ผ่าน และเมนูหน้าแรก ระบบแนะนำ และผู้พัฒนาถูกนำออกแล้วครับ
+
+
+app.py
+โค้ด
+
+
+
