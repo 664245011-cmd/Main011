@@ -1,8 +1,8 @@
 import streamlit as st
 
 st.set_page_config(
-    page_title="Anime Recommendation Hub",
-    page_icon="🎌",
+    page_title="Major Cineplex | Anime Recommendation Hub",
+    page_icon="🎬",
     layout="wide",
     initial_sidebar_state="collapsed",
 )
@@ -12,208 +12,250 @@ st.markdown(
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;800&display=swap');
 
-/* Main App Layout - Premium Dark Anime Theme */
+/* Overall Dark Background */
 .stApp {
-    background-color: #030712;
-    background-image: 
-        radial-gradient(circle at 15% 10%, rgba(225, 29, 72, 0.12) 0%, transparent 40%),
-        radial-gradient(circle at 85% 90%, rgba(79, 70, 229, 0.15) 0%, transparent 40%);
+    background-color: #0B0B0E;
+    background-image: linear-gradient(180deg, #050507 0%, #0B0B0E 100%);
     background-attachment: fixed;
 }
 
 html, body, [class*="css"] {
-    font-family: 'Prompt', 'Outfit', sans-serif;
-    color: #F8FAFC;
+    font-family: 'Prompt', sans-serif;
+    color: #FFFFFF;
 }
 
-/* Hero Section */
-.hero {
-    text-align: center;
-    padding: 50px 20px 25px 20px;
+/* Header Navbar - Major Style */
+.major-navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 30px;
+    background: #000000;
+    border-bottom: 2px solid #E50914;
+    margin: -60px -50px 20px -50px;
 }
 
-.hero-badge {
-    display: inline-block;
-    padding: 6px 16px;
-    border-radius: 30px;
-    background: rgba(225, 29, 72, 0.1);
-    border: 1px solid rgba(225, 29, 72, 0.3);
-    color: #FB7185;
+.major-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.major-logo span.brand {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 900;
+    font-size: 1.6rem;
+    color: #D4AF37;
+    letter-spacing: 2px;
+}
+
+.major-nav-links {
+    display: flex;
+    gap: 20px;
     font-size: 0.85rem;
-    font-weight: 600;
-    margin-bottom: 15px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
+    color: #A1A1AA;
 }
 
-.hero h1 {
-    font-family: 'Outfit', 'Prompt', sans-serif;
-    font-size: 3.4rem;
+.major-nav-links span {
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.major-nav-links span:hover {
+    color: #E50914;
+}
+
+/* Banner Featured Hero Section with Anime Wallpaper Background */
+.hero-banner {
+    width: 100%;
+    height: 230px;
+    background: linear-gradient(90deg, rgba(5, 5, 7, 0.95) 0%, rgba(229, 9, 20, 0.65) 50%, rgba(5, 5, 7, 0.95) 100%), 
+                url('https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=1200') center/cover;
+    border-radius: 12px;
+    padding: 35px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+    margin-bottom: 25px;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.hero-banner h1 {
+    font-size: 2.2rem;
     font-weight: 800;
-    background: linear-gradient(135deg, #FFFFFF 20%, #FB7185 60%, #818CF8 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 12px;
-    letter-spacing: -0.5px;
-    filter: drop-shadow(0 0 30px rgba(225, 29, 72, 0.2));
+    margin: 0 0 8px 0;
+    color: #FFFFFF;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.8);
 }
 
-.hero p {
-    color: #94A3B8;
-    font-size: 1.15rem;
-    letter-spacing: 0.3px;
-    margin-top: 0;
+.hero-banner p {
+    color: #E4E4E7;
+    font-size: 1.05rem;
+    margin: 0;
     font-weight: 300;
 }
 
-/* Modern Glass Cards */
-.card {
-    background: linear-gradient(145deg, rgba(17, 24, 39, 0.7), rgba(11, 15, 25, 0.8));
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    border-radius: 20px;
-    padding: 30px 24px;
-    height: 280px;
+/* Major Section Red Gradient Title Bar */
+.section-header-red {
+    background: linear-gradient(90deg, #E50914 0%, #8B0000 40%, rgba(11, 11, 14, 0) 100%);
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    letter-spacing: 0.5px;
+}
+
+/* Poster Card */
+.movie-card {
+    background: #141419;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+    margin-bottom: 20px;
+}
+
+.movie-card:hover {
+    transform: translateY(-8px);
+    border-color: #E50914;
+    box-shadow: 0 12px 28px rgba(229, 9, 20, 0.4);
+}
+
+.movie-poster {
+    width: 100%;
+    height: 200px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    background-color: #1F1F28;
+    display: flex;
+    align-items: flex-end;
+}
+
+.poster-overlay {
+    width: 100%;
+    padding: 10px;
+    background: linear-gradient(0deg, #141419 0%, transparent 100%);
+}
+
+.poster-badge {
+    display: inline-block;
+    padding: 3px 8px;
+    background: #E50914;
+    color: #FFFFFF;
+    font-size: 0.7rem;
+    font-weight: 700;
+    border-radius: 4px;
+    margin-bottom: 5px;
+}
+
+.movie-body {
+    padding: 15px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    margin-bottom: 24px;
-    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
-    position: relative;
+    flex-grow: 1;
+}
+
+.movie-body h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin: 0 0 8px 0;
+    line-height: 1.4;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.movie-body p {
+    font-size: 0.82rem;
+    color: #A1A1AA;
+    line-height: 1.5;
+    margin: 0 0 15px 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
     overflow: hidden;
 }
 
-.card::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: 20px;
-    border: 1px solid rgba(251, 113, 133, 0);
-    transition: border-color 0.4s ease;
-    pointer-events: none;
-}
-
-.card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px -15px rgba(225, 29, 72, 0.3);
-    background: linear-gradient(145deg, rgba(22, 30, 49, 0.8), rgba(15, 23, 42, 0.9));
-}
-
-.card:hover::after {
-    border-color: rgba(251, 113, 133, 0.4);
-}
-
-.card-top {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 12px;
-}
-
-.card .icon {
-    font-size: 2rem;
-    padding: 12px;
-    background: rgba(255, 255, 255, 0.03);
-    border-radius: 14px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.card h3 {
-    color: #F8FAFC;
-    font-family: 'Outfit', 'Prompt', sans-serif;
-    margin: 0;
-    font-size: 1.15rem;
-    font-weight: 700;
-    line-height: 1.4;
-}
-
-.card p {
-    color: #94A3B8;
-    font-size: 0.9rem;
-    line-height: 1.6;
-    margin: 0;
-    font-weight: 300;
-}
-
-/* Premium Button */
-.btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
+/* Major Booking Button Style */
+.btn-book {
+    display: block;
+    width: 100%;
+    padding: 10px 0;
     text-align: center;
-    text-decoration: none !important;
-    padding: 12px 20px;
-    border-radius: 12px;
-    font-weight: 600;
-    font-size: 0.95rem;
+    background: linear-gradient(135deg, #E50914 0%, #B81D24 100%);
     color: #FFFFFF !important;
-    background: linear-gradient(135deg, #E11D48 0%, #4F46E5 100%);
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 20px rgba(225, 29, 72, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-weight: 700;
+    font-size: 0.88rem;
+    border-radius: 6px;
+    text-decoration: none !important;
+    transition: all 0.2s ease;
+    border: 1px solid #FF3B30;
+    box-shadow: 0 4px 12px rgba(229, 9, 20, 0.3);
 }
 
-.btn:hover {
-    background: linear-gradient(135deg, #F43F5E 0%, #6366F1 100%);
-    box-shadow: 0 6px 25px rgba(225, 29, 72, 0.5);
-    transform: translateY(-2px);
+.btn-book:hover {
+    background: #FF1E27;
+    box-shadow: 0 6px 18px rgba(229, 9, 20, 0.6);
+    color: #FFF275 !important;
 }
 
-.section-divider {
-    display: flex;
-    align-items: center;
-    text-align: center;
-    color: #64748B;
-    font-size: 0.9rem;
-    font-weight: 500;
-    letter-spacing: 1px;
-    margin: 20px 0 35px 0;
-    text-transform: uppercase;
-}
-
-.section-divider::before, .section-divider::after {
-    content: '';
-    flex: 1;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.section-divider::before { margin-right: 15px; }
-.section-divider::after { margin-left: 15px; }
-
+/* Footer */
 .custom-footer {
     text-align: center;
-    color: #64748B;
-    margin-top: 60px;
-    padding: 30px 20px;
+    color: #71717A;
+    margin-top: 50px;
+    padding: 25px 20px;
     font-size: 0.85rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 footer, #MainMenu { visibility: hidden; }
 
 [data-testid="stSidebar"] {
-    background: #0B0F19 !important;
-    border-right: 1px solid rgba(255, 255, 255, 0.05) !important;
+    background: #09090C !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.08) !important;
 }
 </style>
 
-<div class="hero">
-    <div class="hero-badge">⚡ GRAPH-POWERED RECOMMENDATION</div>
-    <h1>ANIME RECOMMENDATION</h1>
-    <p>ระบบแนะนำอนิเมะอัจฉริยะด้วยฐานข้อมูลกราฟความสัมพันธ์ User & Anime</p>
+<!-- Major Top Bar Header -->
+<div class="major-navbar">
+    <div class="major-logo">
+        <span style="font-size: 1.8rem;">🍿</span>
+        <span class="brand">ANIME</span>
+    </div>
+    <div class="major-nav-links">
+        <span>หน้าแรก</span>
+        <span>ระบบแนะนำ</span>
+        <span>ผู้พัฒนา</span>
+    </div>
+</div>
+
+<!-- Major Feature Banner -->
+<div class="hero-banner">
+    <span class="poster-badge" style="width: fit-content; margin-bottom: 8px;">RECOMMENDED SYSTEM</span>
+    <h1>ANIME RECOMMENDATION HUB</h1>
+    <p>ระบบแนะนำอนิเมะอัจฉริยะ ประมวลผลจากฐานข้อมูลกราฟความสัมพันธ์ (Neo4j)</p>
 </div>
 """,
     unsafe_allow_html=True,
 )
 
 st.markdown(
-    '<div class="section-divider">ระบบและเครื่องมือทั้งหมด</div>',
+    '<div class="section-header-red">🎬 ระบบและเครื่องมือแนะนำทั้งหมด</div>',
     unsafe_allow_html=True,
 )
 
@@ -223,68 +265,78 @@ APPS = [
         "โครงสร้างข้อมูล Anime & User",
         "จัดการข้อมูล User และ Anime ด้วยฐานข้อมูลกราฟ Neo4j",
         "https://colab.research.google.com/drive/1KMFRz3LPGn4fD5jBG-ZwCuxoh_yIozvE?usp=sharing",
-        "เปิดใน Colab →",
+        "เปิดใน Colab 🎟️",
+        "https://upload.wikimedia.org/wikipedia/commons/d/d0/Google_Colaboratory_SVG_Logo.svg",
     ),
     (
         "👥",
         "วิเคราะห์ความสัมพันธ์ User",
         "วิเคราะห์ความสัมพันธ์ FRIEND_OF และประวัติการดู Anime",
         "https://colab.research.google.com/drive/1UYPIwMs_xU9LFInJJ1FPOMk_e7nA3_Pt?usp=sharing",
-        "เปิดใน Colab →",
+        "เปิดใน Colab 🎟️",
+        "https://upload.wikimedia.org/wikipedia/commons/d/d0/Google_Colaboratory_SVG_Logo.svg",
     ),
     (
         "🎯",
         "ระบบแนะนำ Anime",
         "แนะนำ Anime จากความสัมพันธ์และ Anime ที่เพื่อนเคยดู",
         "https://9suvavqbzjuffsung5rryh.streamlit.app/",
-        "ใช้งานระบบ →",
+        "เปิดใน streamlit 🎟️",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDyBXS1JbKttxnxaeSKQkdqdZkZRPf2qYA1goKOn_iug&s=10",
     ),
-   
+    (
+        "⛅️️",
+        "Canva Presentation",
+        "งานนำเสนอสไลด์โปรเจกต์ Anime Recommendation บน Canva",
+        "https://canva.link/3u8r9s574edov6g",
+        "เข้าชม Canva 🎬",
+        "https://logos-world.net/wp-content/uploads/2021/11/Canva-Logo.png",
+    ),
+    (
+        "⛅️",
+        "แบบฝีกหัด",
+        "แบบฝีกหัดสไลด์ บน Canva",
+        "https://canva.link/n0t7yuf9venb98p",
+        "เข้าชม Canva 🎬",
+        "https://cdn-icons-png.flaticon.com/512/2991/2991108.png",
+    ),
+    (
+        "⛅️",
+        "github",
+        "เข้าเว็บ github",
+        "https://github.com/664245011-cmd",
+        "เข้าเว็บ github 🎬",
+        "https://upload.wikimedia.org/wikipedia/commons/c/c2/GitHub_Invertocat_Logo.svg",
+    ),
 ]
 
-# จัดเลย์เอาต์การ์ด: แถวแรก 3 ใบ และแถวที่ 4 วางตรงกลาง
-cols = st.columns(3)
-for i, (icon, title, desc, url, btn_text) in enumerate(APPS):
-  if i < 3:
-    with cols[i]:
-      st.markdown(
-          f"""
-            <div class="card">
-                <div>
-                    <div class="card-top">
-                        <div class="icon">{icon}</div>
-                        <h3>{title}</h3>
+cols = st.columns(4)
+for i, (icon, title, desc, url, btn_text, img_url) in enumerate(APPS):
+    with cols[i % 4]:
+        st.markdown(
+            f"""
+            <div class="movie-card">
+                <div class="movie-poster" style="background-image: url('{img_url}');">
+                    <div class="poster-overlay">
+                        <span class="poster-badge">{icon} FEATURE</span>
                     </div>
-                    <p>{desc}</p>
                 </div>
-                <a class="btn" href="{url}" target="_blank">{btn_text}</a>
+                <div class="movie-body">
+                    <div>
+                        <h3>{title}</h3>
+                        <p>{desc}</p>
+                    </div>
+                    <a class="btn-book" href="{url}" target="_blank">{btn_text}</a>
+                </div>
             </div>
             """,
-          unsafe_allow_html=True,
-      )
-  else:
-    left, center, right = st.columns([1, 1.0, 1])
-    with center:
-      st.markdown(
-          f"""
-            <div class="card">
-                <div>
-                    <div class="card-top">
-                        <div class="icon">{icon}</div>
-                        <h3>{title}</h3>
-                    </div>
-                    <p>{desc}</p>
-                </div>
-                <a class="btn" href="{url}" target="_blank">{btn_text}</a>
-            </div>
-            """,
-          unsafe_allow_html=True,
-      )
+            unsafe_allow_html=True,
+        )
 
 st.markdown(
     """
     <div class="custom-footer">
-        Anime Recommendation System &bull; Built with Streamlit & Neo4j &copy; 2026
+        Major Anime Recommendation System &bull; Powered by Streamlit & Neo4j &copy; 2026
     </div>
     """,
     unsafe_allow_html=True,

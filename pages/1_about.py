@@ -4,8 +4,8 @@ from pathlib import Path
 import streamlit as st
 
 st.set_page_config(
-    page_title="ผู้พัฒนา | Anime Recommendation",
-    page_icon="🧑‍💻",
+    page_title="ผู้พัฒนา | Major Cineplex Anime",
+    page_icon="🎬",
     layout="wide",
     initial_sidebar_state="collapsed",
 )
@@ -15,213 +15,168 @@ st.markdown(
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;800&display=swap');
 
-/* Main App Layout - Anime Cyberpunk Theme */
 .stApp {
-    background-color: #050811;
-    background-image: 
-        radial-gradient(circle at 10% 20%, rgba(236, 72, 153, 0.12) 0%, transparent 30%),
-        radial-gradient(circle at 90% 80%, rgba(59, 130, 246, 0.15) 0%, transparent 35%),
-        radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.08) 0%, transparent 40%);
+    background-color: #0B0B0E;
+    background-image: linear-gradient(180deg, #050507 0%, #0B0B0E 100%);
     background-attachment: fixed;
 }
 
 html, body, [class*="css"] { 
-    font-family: 'Prompt', 'Outfit', sans-serif; 
-    color: #F1F5F9;
+    font-family: 'Prompt', sans-serif; 
+    color: #FFFFFF;
 }
 
-/* Hero Section with Glowing Accent */
-.hero { 
-    text-align: center; 
-    padding: 40px 20px 10px 20px; 
-}
-.hero h1 {
-    font-family: 'Outfit', 'Prompt', sans-serif;
-    font-size: 3.2rem;
-    font-weight: 800;
-    background: linear-gradient(135deg, #FF758C 0%, #FF7EB3 50%, #7928CA 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 6px;
-    filter: drop-shadow(0 0 25px rgba(255, 117, 140, 0.3));
-}
-.hero p { 
-    color: #94A3B8; 
-    font-size: 1.15rem; 
-    letter-spacing: 0.5px; 
-    margin-top: 0; 
-    font-weight: 300;
+/* Major Header Bar */
+.major-navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 30px;
+    background: #000000;
+    border-bottom: 2px solid #E50914;
+    margin: -60px -50px 20px -50px;
 }
 
-/* Profile Photo Wrap with Anime Ring */
+.major-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.major-logo span.brand {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 900;
+    font-size: 1.6rem;
+    color: #D4AF37;
+    letter-spacing: 2px;
+}
+
+/* Profile Photo Wrap */
 .profile-photo-wrap {
     display: flex;
     justify-content: center;
-    margin-top: 25px;
-}
-.profile-photo-wrap img {
-    width: 190px;
-    height: 190px;
-    border-radius: 50%;
-    border: 4px solid transparent;
-    background:
-        linear-gradient(#0F172A, #0F172A) padding-box,
-        linear-gradient(135deg, #FF758C, #8B5CF6, #3B82F6) border-box;
-    box-shadow: 0 0 35px rgba(139, 92, 246, 0.4), inset 0 0 15px rgba(255, 117, 140, 0.3);
-    object-fit: cover;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-.profile-photo-wrap img:hover {
-    transform: scale(1.05) rotate(2deg);
-    box-shadow: 0 0 50px rgba(255, 117, 140, 0.6), inset 0 0 20px rgba(59, 130, 246, 0.5);
+    margin-top: 30px;
 }
 
-/* Glassmorphism Profile Card */
-.profile-card {
-    max-width: 480px;
-    margin: 30px auto 0 auto;
-    background: rgba(15, 23, 42, 0.75);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 24px;
-    padding: 35px 40px;
+.profile-photo-wrap img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 3px solid #D4AF37;
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.3), 0 0 15px rgba(229, 9, 20, 0.4);
+    object-fit: cover;
+}
+
+/* Major Red Title Section */
+.section-header-red {
+    background: linear-gradient(90deg, #E50914 0%, #8B0000 40%, rgba(11, 11, 14, 0) 100%);
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin: 20px auto 0 auto;
+    max-width: 500px;
     text-align: center;
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5), 0 0 20px rgba(139, 92, 246, 0.1);
-    position: relative;
-    overflow: hidden;
 }
-.profile-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; height: 3px;
-    background: linear-gradient(90deg, #FF758C, #8B5CF6, #3B82F6);
+
+/* Movie VIP Card */
+.profile-card {
+    max-width: 500px;
+    margin: 20px auto 0 auto;
+    background: #141419;
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    border-radius: 16px;
+    padding: 30px 35px;
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.8);
 }
+
 .profile-card h2 {
     color: #FFFFFF;
-    font-family: 'Outfit', 'Prompt', sans-serif;
-    font-size: 1.65rem;
+    font-size: 1.6rem;
     font-weight: 700;
-    margin: 0 0 24px 0;
-    letter-spacing: 0.5px;
+    margin: 10px 0 20px 0;
 }
+
 .info-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 8px;
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
-    color: #CBD5E1;
+    padding: 12px 0;
+    border-top: 1px dashed rgba(255, 255, 255, 0.1);
+    color: #E4E4E7;
     font-size: 1.05rem;
 }
-.info-row:first-of-type { border-top: none; }
+
 .info-row span.label { 
-    color: #94A3B8; 
-    font-weight: 400; 
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    color: #A1A1AA; 
 }
+
 .info-row span.value { 
-    font-weight: 600; 
-    color: #F472B6; 
-    background: rgba(244, 114, 182, 0.1);
-    padding: 4px 12px;
-    border-radius: 8px;
-    border: 1px solid rgba(244, 114, 182, 0.2);
-    letter-spacing: 0.5px; 
+    font-weight: 700; 
+    color: #D4AF37; 
+    background: rgba(229, 9, 20, 0.25);
+    padding: 4px 14px;
+    border-radius: 6px;
+    border: 1px solid rgba(229, 9, 20, 0.5);
 }
 
-/* Hide default Streamlit elements */
 footer, #MainMenu { visibility: hidden; }
-[data-testid="stSidebar"], [data-testid="stSidebarCollapsedControl"] { visibility: visible !important; }
 
-/* Sidebar Styling */
 [data-testid="stSidebar"] {
-    background: #090D16 !important;
-    border-right: 1px solid rgba(255, 255, 255, 0.05) !important;
+    background: #09090C !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.08) !important;
 }
-[data-testid="stSidebarNav"] { padding-top: 20px; }
-[data-testid="stSidebarNav"]::before {
-    content: "ANIME HUB MENU";
-    display: block;
-    margin: 0 20px 20px 20px;
-    padding-bottom: 16px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    font-family: 'Outfit', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 2px;
-    color: #64748B;
-}
-[data-testid="stSidebarNav"] a {
-    margin: 4px 12px !important;
-    padding: 12px 16px !important;
-    border-radius: 12px;
-    color: #94A3B8 !important;
-    font-family: 'Prompt', sans-serif;
-    font-weight: 500;
-    font-size: 0.95rem;
-    transition: all 0.25s ease;
-    background: transparent !important;
-}
-[data-testid="stSidebarNav"] a:hover {
-    background: rgba(255, 117, 140, 0.1) !important;
-    color: #FF758C !important;
-}
+
 [data-testid="stSidebarNav"] a[aria-current="page"] {
-    background: linear-gradient(90deg, rgba(255, 117, 140, 0.15) 0%, transparent 100%) !important;
-    color: #FF758C !important;
-    border-left: 3px solid #FF758C;
-    font-weight: 600;
+    background: rgba(229, 9, 20, 0.2) !important;
+    color: #D4AF37 !important;
+    border-left: 3px solid #E50914;
 }
 
-/* Menu label overrides */
-[data-testid="stSidebarNav"] li:nth-child(1) a * { font-size: 0 !important; }
-[data-testid="stSidebarNav"] li:nth-child(1) a::after { content: "🏠 หน้าหลัก"; font-size: 0.95rem !important; }
-[data-testid="stSidebarNav"] li:nth-child(2) a * { font-size: 0 !important; }
-[data-testid="stSidebarNav"] li:nth-child(2) a::after { content: "🧑‍💻 ผู้พัฒนา"; font-size: 0.95rem !important; }
-
-/* Footer */
 .custom-footer {
     text-align: center;
-    color: #64748B;
+    color: #71717A;
     margin-top: 60px;
-    padding: 30px 20px;
+    padding: 25px 20px;
     font-size: 0.85rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 </style>
+
+<!-- Major Navbar -->
+<div class="major-navbar">
+    <div class="major-logo">
+        <span style="font-size: 1.8rem;">🍿</span>
+        <span class="brand">ANIME</span>
+    </div>
+</div>
 """,
     unsafe_allow_html=True,
 )
 
 st.markdown(
-    """
-<div class="hero">
-    <h1>ผู้พัฒนา</h1>
-    <p>✨ ข้อมูลผู้จัดทำโปรเจค Anime Recommendation ✨</p>
-</div>
-""",
+    '<div class="section-header-red">🧑‍💻 ข้อมูลผู้จัดทำโปรเจกต์</div>',
     unsafe_allow_html=True,
 )
 
 # โหลดรูปภาพ
 photo_path = Path(__file__).resolve().parent.parent / "assets" / "1.jpg"
 try:
-  photo_b64 = base64.b64encode(photo_path.read_bytes()).decode()
-  st.markdown(
-      f'<div class="profile-photo-wrap"><img src="data:image/jpeg;base64,{photo_b64}" alt="Profile Photo"></div>',
-      unsafe_allow_html=True,
-  )
+    photo_b64 = base64.b64encode(photo_path.read_bytes()).decode()
+    st.markdown(
+        f'<div class="profile-photo-wrap"><img src="data:image/jpeg;base64,{photo_b64}" alt="Profile Photo"></div>',
+        unsafe_allow_html=True,
+    )
 except FileNotFoundError:
-  st.markdown(
-      '<div class="profile-photo-wrap"><div'
-      ' style="width:190px;height:190px;border-radius:50%;background:#0F172A;border:4px'
-      ' solid'
-      ' #FF758C;display:flex;align-items:center;justify-content:center;font-size:4rem;">🧑‍💻</div></div>',
-      unsafe_allow_html=True,
-  )
+    st.markdown(
+        '<div class="profile-photo-wrap"><div'
+        ' style="width:180px;height:180px;border-radius:50%;background:#141419;border:3px'
+        ' solid'
+        ' #D4AF37;display:flex;align-items:center;justify-content:center;font-size:4rem;">🧑‍💻</div></div>',
+        unsafe_allow_html=True,
+    )
 
 st.markdown(
     """
@@ -243,7 +198,7 @@ st.markdown(
 st.markdown(
     """
 <div class="custom-footer">
-    Anime Recommendation System &bull; Powered by Streamlit &copy; 2026
+    Major Anime Recommendation System &bull; Powered by Streamlit &copy; 2026
 </div>
 """,
     unsafe_allow_html=True,
