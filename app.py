@@ -1,128 +1,96 @@
+import streamlit as st
 
-.btn-book:hover {
-    background: #FF1E27;
-    box-shadow: 0 6px 18px rgba(229, 9, 20, 0.6);
-    color: #FFF275 !important;
-}
-
-/* Footer */
-.custom-footer {
-    text-align: center;
-    color: #71717A;
-    margin-top: 50px;
-    padding: 25px 20px;
-    font-size: 0.85rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-footer, #MainMenu { visibility: hidden; }
-
-[data-testid="stSidebar"] {
-    background: #09090C !important;
-    border-right: 1px solid rgba(255, 255, 255, 0.08) !important;
-}
-</style>
-
-<!-- Header: logo only (navigation links removed) -->
-<div class="major-navbar">
-    <div class="major-logo">
-        <span style="font-size: 1.8rem;">🍿</span>
-        <span class="brand">ANIME</span>
-    </div>
-</div>
-
-<!-- Major Feature Banner -->
-<div class="hero-banner">
-    <span class="poster-badge" style="width: fit-content; margin-bottom: 8px;">RECOMMENDED SYSTEM</span>
-    <h1>ANIME RECOMMENDATION HUB</h1>
-    <p>ระบบแนะนำอนิเมะอัจฉริยะ ประมวลผลจากฐานข้อมูลกราฟความสัมพันธ์ (Neo4j)</p>
-</div>
-""",
-    unsafe_allow_html=True,
+st.set_page_config(
+    page_title="Major Cineplex | Anime Recommendation Hub",
+    page_icon="🎬",
+    layout="wide",
+    initial_sidebar_state="collapsed",
 )
-
-st.markdown(
-    '<div class="section-header-red">🎬 ระบบและเครื่องมือแนะนำทั้งหมด</div>',
-    unsafe_allow_html=True,
-)
-
-APPS = [
-    (
-        "🎌",
-        "โครงสร้างข้อมูล Anime & User",
-        "จัดการข้อมูล User และ Anime ด้วยฐานข้อมูลกราฟ Neo4j",
-        "https://colab.research.google.com/drive/1KMFRz3LPGn4fD5jBG-ZwCuxoh_yIozvE?usp=sharing",
-        "เปิดใน Colab 🎟️",
-        "https://upload.wikimedia.org/wikipedia/commons/d/d0/Google_Colaboratory_SVG_Logo.svg",
-    ),
-    (
-        "👥",
-        "วิเคราะห์ความสัมพันธ์ User",
-        "วิเคราะห์ความสัมพันธ์ FRIEND_OF และประวัติการดู Anime",
-        "https://colab.research.google.com/drive/1UYPIwMs_xU9LFInJJ1FPOMk_e7nA3_Pt?usp=sharing",
-        "เปิดใน Colab 🎟️",
-        "https://upload.wikimedia.org/wikipedia/commons/d/d0/Google_Colaboratory_SVG_Logo.svg",
-    ),
-    (
-        "🎯",
-        "ระบบแนะนำ Anime",
-        "แนะนำ Anime จากความสัมพันธ์และ Anime ที่เพื่อนเคยดู",
-        "https://9suvavqbzjuffsung5rryh.streamlit.app/",
-        "เปิดใน streamlit 🎟️",
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDyBXS1JbKttxnxaeSKQkdqdZkZRPf2qYA1goKOn_iug&s=10",
-    ),
-    (
-        "⛅️️",
-        "Canva Presentation",
-        "งานนำเสนอสไลด์โปรเจกต์ Anime Recommendation บน Canva",
-        "https://canva.link/3u8r9s574edov6g",
-        "เข้าชม Canva 🎬",
-        "https://logos-world.net/wp-content/uploads/2021/11/Canva-Logo.png",
-    ),
-    (
-        "⛅️",
-        "แบบฝึกหัด",
-        "แบบฝึกหัดสไลด์ บน Canva",
-        "https://canva.link/n0t7yuf9venb98p",
-        "เข้าชม Canva 🎬",
-        "https://cdn-icons-png.flaticon.com/512/2991/2991108.png",
-    ),
-    (
-        "⛅️",
-        "GitHub",
-        "เข้าเว็บ GitHub",
-        "https://github.com/664245011-cmd",
-        "เข้าเว็บ GitHub 🎬",
-        "https://upload.wikimedia.org/wikipedia/commons/c/c2/GitHub_Invertocat_Logo.svg",
-    ),
-]
-
-cols = st.columns(4)
-for i, (icon, title, desc, url, btn_text, img_url) in enumerate(APPS):
-    with cols[i % 4]:
-        st.markdown(
-            f"""
-            <div class="movie-card">
-                <div class="movie-poster" style="background-image: url('{img_url}');">
-                    <div class="poster-overlay">
-                        <span class="poster-badge">{icon} FEATURE</span>
-                    </div>
-                </div>
-                <div class="movie-body">
-                    <div>
-                        <h3>{title}</h3>
-                        <p>{desc}</p>
-                    </div>
-                    <a class="btn-book" href="{url}" target="_blank" rel="noopener noreferrer">{btn_text}</a>
-                </div>
-            </div>
-            """,
-            unsafe_allow_html=True,
-        )
 
 st.markdown(
     """
-    <div class="custom-footer">
-        Major Anime Recommendation System &bull; Powered by Streamlit & Neo4j &copy; 2026
-    </div>
-    """,
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;800&display=swap');
+
+/* Overall Dark Background */
+.stApp {
+    background-color: #0B0B0E;
+    background-image: linear-gradient(180deg, #050507 0%, #0B0B0E 100%);
+    background-attachment: fixed;
+}
+
+html, body, [class*="css"] {
+    font-family: 'Prompt', sans-serif;
+    color: #FFFFFF;
+}
+
+/* Header Navbar - logo only */
+.major-navbar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 12px 30px;
+    background: #000000;
+    border-bottom: 2px solid #E50914;
+    margin: -60px -50px 20px -50px;
+}
+
+.major-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.major-logo span.brand {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 900;
+    font-size: 1.6rem;
+    color: #D4AF37;
+    letter-spacing: 2px;
+}
+
+/* Banner Featured Hero Section with Anime Wallpaper Background */
+.hero-banner {
+    width: 100%;
+    height: 230px;
+    background: linear-gradient(90deg, rgba(5, 5, 7, 0.95) 0%, rgba(229, 9, 20, 0.65) 50%, rgba(5, 5, 7, 0.95) 100%),
+                url('https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=1200') center/cover;
+    border-radius: 12px;
+    padding: 35px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+    margin-bottom: 25px;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.hero-banner h1 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin: 0 0 8px 0;
+    color: #FFFFFF;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+}
+
+.hero-banner p {
+    color: #E4E4E7;
+    font-size: 1.05rem;
+    margin: 0;
+    font-weight: 300;
+}
+
+/* Major Section Red Gradient Title Bar */
+.section-header-red {
+    background: linear-gradient(90deg, #E50914 0%, #8B0000 40%, rgba(11, 11, 14, 0) 100%);
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    letter-spacing: 0.5px;
+}
