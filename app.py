@@ -24,7 +24,7 @@ html, body, [class*="css"] {
     color: #FFFFFF;
 }
 
-/* Header Navbar - logo only */
+/* Header Navbar - Major Style */
 .major-navbar {
     display: flex;
     align-items: center;
@@ -53,7 +53,7 @@ html, body, [class*="css"] {
 .hero-banner {
     width: 100%;
     height: 230px;
-    background: linear-gradient(90deg, rgba(5, 5, 7, 0.95) 0%, rgba(229, 9, 20, 0.65) 50%, rgba(5, 5, 7, 0.95) 100%),
+    background: linear-gradient(90deg, rgba(5, 5, 7, 0.95) 0%, rgba(229, 9, 20, 0.65) 50%, rgba(5, 5, 7, 0.95) 100%), 
                 url('https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=1200') center/cover;
     border-radius: 12px;
     padding: 35px 40px;
